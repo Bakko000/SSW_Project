@@ -1,6 +1,7 @@
 <h1>Prenotazioni teatro</h1>
 <p>
   <label for="chiave">Inserisci la chiave</label> <input type="text" class="textbox" id="chiave"/>
+  <app-checkkey (checkKeyEvent)="Login($event)"> </app-checkkey>
 </p>
 <p>
   <button (click)="aggiungi()">Aggiungi teatro</button>
