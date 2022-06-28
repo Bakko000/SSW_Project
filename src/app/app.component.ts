@@ -12,11 +12,11 @@ export class AppComponent  {
   }
 
 
-  Login(checkKey: string) {
-    
+  Login(key: string) {
+    alert(key);
   }
 
-  aggiungi() {
+  Aggiungi() {
     alert("Aggiungi");
   }
 
