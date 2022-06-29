@@ -6,16 +6,18 @@ import { DbService } from "./db.service";
   templateUrl: './app.component.html',
   styleUrls: [ './app.component.css' ]
 })
-export class AppComponent  {
 
-  $(x) {
-    return document.getElementById(x);
-  }
+export class AppComponent  {
 
   constructor(private db: DbService) {}
 
   Login(key: string) {
+
     this.db.checkKey(key)
+    .subscribe({
+      next: (content: any) => document.getElementById("output").innerHTML = content,
+      error: err => console.error("Errore: " + err)
+    });
   }
 
 
