@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Teatro } from '../app.component'
 
 @Component({
   selector: 'app-nominativo',
