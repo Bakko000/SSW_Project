@@ -13,6 +13,7 @@ export class NuovoTeatroComponent implements OnInit {
 
   newTheatre() {
     const output = <HTMLElement>document.getElementById("output");
+    var clicked: boolean = true;
     this.db.newKey()
     .subscribe({
       next: (content: any) => { 

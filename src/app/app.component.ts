@@ -27,7 +27,7 @@ export class AppComponent  {
         if(content!=null) {
         output.innerHTML = content; 
         } else {
-          output.innerHTML = "Teatro vuoto"
+          output.innerHTML = "Teatro vuoto";
         }
         console.log("Accesso al teatro");
       },

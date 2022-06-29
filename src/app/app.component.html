@@ -11,7 +11,8 @@
 
   <button (click)="nuovoteatro.newTheatre()">Crea nuovo teatro</button>
    
-  <app-nuovoteatro #nuovoteatro></app-nuovoteatro>
+  <app-nuovoteatro #nuovoteatro *ngIf="clicked"></app-nuovoteatro>
+
 
 </p>
 
