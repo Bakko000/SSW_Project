@@ -1,4 +1,5 @@
 import { Component, Output, EventEmitter, OnInit } from '@angular/core';
+import { DbService } from "../db.service";
 
 
 @Component({
@@ -8,13 +9,20 @@ import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 
 export class NuovoTeatroComponent implements OnInit {
 
-  constructor() { }
+  constructor(private db: DbService) {}
 
-  test = 0;
-  
   newTheatre() {
-    alert("ciao");
-    this.test++;
+    const output = <HTMLElement>document.getElementById("notifica");
+    var newkey:string;
+    this.db.newKey()
+    .subscribe({
+      next: (content: any) => newkey = content,
+      error: err => { 
+        console.error(err.error);
+        console.log(this.db.baseurl+"/new?secret=ssw2022");
+        output.innerHTML = "Il teatro selezionato non esiste";
+      }
+    });
   }
 
   ngOnInit() {
