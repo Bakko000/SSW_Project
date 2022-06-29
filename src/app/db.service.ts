@@ -1,15 +1,32 @@
 import { Injectable } from '@angular/core';
+import { Observable } from "rxjs";
+import { HttpClient } from "@angular/common/http";
+import { ajax, AjaxResponse, AjaxError } from 'rxjs/ajax';
 
-@Injectable()
+
+@Injectable({
+  providedIn: 'root'
+})
 
 export class DbService {
-  const URL: string =
+   currurl: string =
   'https://eu-central-1.aws.data.mongodb-api.com/app/kvaas-giwjg/endpoint';
-  var key: string;
   
-  constructor(private http: HttpClient) { }
+  constructor() { }
 
-  public getData(CityName: string): Observable<string> {
-    return this.http.get<string>(this.URL+CityName);
+  checkKey(key: string) {
+    ajax({
+      method: 'GET',
+      url: this.currurl + '/get?key=' + key,
+      crossDomain: true,
+    })
+    .subscribe({
+      next: (res: AjaxResponse<any>) => {
+        document.getElementById('output').innerHTML = res.response;
+      },
+      error: (err: AjaxError) => { console.error(err.response); document.getElementById('output').innerHTML = "Il teatro selezionato non esiste";
+      }
+    });
   }
+  
 }

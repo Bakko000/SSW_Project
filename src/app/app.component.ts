@@ -1,4 +1,5 @@
 import { Component, VERSION } from '@angular/core';
+import { DbService } from "./db.service";
 
 @Component({
   selector: 'my-app',
@@ -12,12 +13,12 @@ export class AppComponent  {
   }
 
 
+  constructor(private db: DbService) {}
   Login(key: string) {
-    alert(key);
+    this.db.checkKey(key)
   }
 
-  Aggiungi() {
-    alert("Aggiungi");
-  }
+
+
 
 }
