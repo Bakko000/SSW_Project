@@ -1,10 +1,11 @@
-import { Component, Output, EventEmitter,OnInit } from '@angular/core';
+import { Component, Output, EventEmitter, OnInit } from '@angular/core';
 
 
 @Component({
   selector: 'app-nuovoteatro',
-  templateUrl: './nuovoteatro.component.html'
+  templateUrl: './nuovoteatro.component.html',
 })
+
 export class NuovoTeatroComponent implements OnInit {
 
   constructor() { }

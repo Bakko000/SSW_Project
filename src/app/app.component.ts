@@ -21,7 +21,6 @@ export class AppComponent  {
 
   Login(key: string) {
     const resultcheck = <HTMLElement>document.getElementById("output");
-
     this.db.checkKey(key)
     .subscribe({
       next: (content: any) => resultcheck.innerHTML = content,
@@ -31,6 +30,4 @@ export class AppComponent  {
       }
     });
   }
-
-
 }
