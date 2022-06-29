@@ -8,13 +8,17 @@ import { HttpClient } from "@angular/common/http";
 })
 
 export class DbService {
-   currurl: string =
+   baseurl: string =
   'https://eu-central-1.aws.data.mongodb-api.com/app/kvaas-giwjg/endpoint';
   
   constructor(private http: HttpClient) { }
 
   public checkKey(key: string): Observable<string> {
-    return this.http.get<string>(this.currurl+"/get?key="+key);
+    return this.http.get<string>(this.baseurl+"/get?key="+key);
+  }
+
+  public newKey(): Observable<string> {
+    return this.http.get<string>(this.baseurl+"/new?secret=ssw2022");
   }
   
 }

@@ -1,8 +1,17 @@
 <h1>Prenotazioni teatro</h1>
+
 <p>
   <label for="chiave">Inserisci la chiave</label> 
 
   <input #chiave (keyup.enter)="Login(chiave.value);chiave.value=''" />
+
+</p>
+
+<p>
+
+  <button (click)="nuovoteatro.newTheatre()">Crea nuovo teatro</button>
+   
+  <app-nuovoteatro #nuovoteatro></app-nuovoteatro>
 
 </p>
 

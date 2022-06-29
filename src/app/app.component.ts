@@ -1,8 +1,13 @@
 import { Component, VERSION } from '@angular/core';
 import { DbService } from "./db.service";
+import { MyTheatre } from './interfaccia/theatre';
 
 
-export class Teatro {}
+export class Teatro implements MyTheatre {
+  platea: Array<string>;
+  palchi: Array<string>;
+
+}
 
 @Component({
   selector: 'my-app',
