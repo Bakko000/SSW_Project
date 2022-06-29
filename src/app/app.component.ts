@@ -20,13 +20,20 @@ export class AppComponent  {
   constructor(private db: DbService) {}
 
   Login(key: string) {
-    const resultcheck = <HTMLElement>document.getElementById("output");
+    const output = <HTMLElement>document.getElementById("output");
     this.db.checkKey(key)
     .subscribe({
-      next: (content: any) => resultcheck.innerHTML = content,
+      next: (content: any) => {
+        if(content!=null) {
+        output.innerHTML = content; 
+        } else {
+          output.innerHTML = "Teatro vuoto"
+        }
+        console.log("Accesso al teatro");
+      },
       error: err => { 
         console.error(err.error);
-        resultcheck.innerHTML = "Il teatro selezionato non esiste"
+        output.innerHTML = "Il teatro selezionato non esiste"
       }
     });
   }

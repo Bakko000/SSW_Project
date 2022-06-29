@@ -12,11 +12,12 @@ export class NuovoTeatroComponent implements OnInit {
   constructor(private db: DbService) {}
 
   newTheatre() {
-    const output = <HTMLElement>document.getElementById("notifica");
-    var newkey:string;
+    const output = <HTMLElement>document.getElementById("output");
     this.db.newKey()
     .subscribe({
-      next: (content: any) => newkey = content,
+      next: (content: any) => { 
+        output.innerHTML="Creato il nuovo teatro con chiave:" + content;
+      },
       error: err => { 
         console.error(err.error);
         console.log(this.db.baseurl+"/new?secret=ssw2022");
