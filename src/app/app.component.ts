@@ -12,13 +12,11 @@ export class AppComponent  {
     return document.getElementById(x);
   }
 
-
   constructor(private db: DbService) {}
+
   Login(key: string) {
     this.db.checkKey(key)
   }
-
-
 
 
 }

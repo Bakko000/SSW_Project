@@ -12,21 +12,10 @@ export class DbService {
    currurl: string =
   'https://eu-central-1.aws.data.mongodb-api.com/app/kvaas-giwjg/endpoint';
   
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  checkKey(key: string) {
-    ajax({
-      method: 'GET',
-      url: this.currurl + '/get?key=' + key,
-      crossDomain: true,
-    })
-    .subscribe({
-      next: (res: AjaxResponse<any>) => {
-        document.getElementById('output').innerHTML = res.response;
-      },
-      error: (err: AjaxError) => { console.error(err.response); document.getElementById('output').innerHTML = "Il teatro selezionato non esiste";
-      }
-    });
+  public checkKey(key: string): Observable<string> {
+    return this.http.get<string>(this.currurl+"/get?key="+key);
   }
   
 }
