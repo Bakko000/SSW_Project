@@ -13,11 +13,11 @@ export class NuovoTeatroComponent implements OnInit {
 
   newTheatre() {
     const output = <HTMLElement>document.getElementById("output");
-    var clicked: boolean = true;
     this.db.newKey()
     .subscribe({
       next: (content: any) => { 
         output.innerHTML="Creato il nuovo teatro con chiave:" + content;
+        var clicked: boolean = true;
       },
       error: err => { 
         console.error(err.error);

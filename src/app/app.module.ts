@@ -9,8 +9,8 @@ import { NominativoComponent } from './nominativo/nominativo.component';
 import { NuovoTeatroComponent } from './nuovoteatro/nuovoteatro.component';
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule, HttpClientModule ],
-  declarations: [ AppComponent, NuovoTeatroComponent],
+  imports:      [ BrowserModule, FormsModule, HttpClientModule],
+  declarations: [ AppComponent, NuovoTeatroComponent, PrenotazioneComponent, NominativoComponent],
   bootstrap:    [ AppComponent ],
   providers:    [ DbService ]
 })
