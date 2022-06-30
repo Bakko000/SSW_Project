@@ -1,7 +1,5 @@
-import { Component, Input, EventEmitter, OnInit, NgModule } from '@angular/core';
+import { Component, Input, OnInit, NgModule } from '@angular/core';
 import { DbService } from "../db.service";
-import { Teatro } from "../app.component";
-import { AbstractControl, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 
 @Component({
