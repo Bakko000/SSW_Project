@@ -1,4 +1,4 @@
-import { Component, VERSION } from '@angular/core';
+import { Component } from '@angular/core';
 import { DbService } from "./db.service";
 import { MyTheatre } from './interfaccia/theatre';
 
