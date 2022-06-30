@@ -10,6 +10,7 @@ import { DbService } from "../db.service";
 export class NuovoTeatroComponent implements OnInit {
 
   @Input() clicked: boolean;
+  @Input() chiave: string;
 
   constructor(private db: DbService) {}
 
@@ -30,11 +31,11 @@ export class NuovoTeatroComponent implements OnInit {
     });
   }
 
-  /* filepalchi: string;
+ /* filepalchi: string;
   fileplatea: string;
 
   CreateTheatre() {
-    console.log("Creato un nuovo teatro con " + filepalchi + " file di palchi e " + fileplatea + " file di platea" );
+    console.log("Creato un nuovo teatro con " + this.filepalchi + " file di palchi e " + this.fileplatea + " file di platea" ); 
   } */
 
   ngOnInit() {

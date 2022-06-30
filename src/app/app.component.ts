@@ -1,47 +1,43 @@
 import { Component } from '@angular/core';
-import { DbService } from "./db.service";
+import { DbService } from './db.service';
 import { MyTheatre } from './interfaccia/theatre';
-
 
 export class Teatro implements MyTheatre {
   platea: Array<string>;
   palchi: Array<string>;
 
   constructor(platea: Array<string>, palchi: Array<string>) {
-    this.platea=platea;
-    this.palchi=palchi;
+    this.platea = platea;
+    this.palchi = palchi;
   }
-
 }
 
 @Component({
   selector: 'my-app',
   templateUrl: './app.component.html',
-  styleUrls: [ './app.component.css' ]
+  styleUrls: ['./app.component.css'],
 })
-
-export class AppComponent  {
-
+export class AppComponent {
   clicked: boolean = false;
-  
+  chiave: string = '';
+
   constructor(private db: DbService) {}
 
   Login(key: string) {
-    const output = <HTMLElement>document.getElementById("output");
-    this.db.checkKey(key)
-    .subscribe({
+    const output = <HTMLElement>document.getElementById('output');
+    this.db.checkKey(key).subscribe({
       next: (content: any) => {
-        if(content!=null) {
-        output.innerHTML = content;
+        if (content != null) {
+          output.innerHTML = content;
         } else {
-          output.innerHTML = "Teatro vuoto";
+          this.chiave = key;
         }
-        console.log("Accesso al teatro");
+        console.log('Accesso al teatro');
       },
-      error: err => { 
+      error: (err) => {
         console.error(err.error);
-        output.innerHTML = "Il teatro selezionato non esiste"
-      }
+        console.log('Il teatro selezionato non esiste');
+      },
     });
   }
 }
