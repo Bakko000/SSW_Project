@@ -1,5 +1,7 @@
 <h1>Prenotazioni teatro</h1>
 
+<div *ngIf="!clicked">
+
 <p>
   <label for="chiave">Inserisci la chiave</label> 
 
@@ -14,6 +16,11 @@
 
 </p>
 
-<app-nuovoteatro [clicked]="clicked" #nuovoteatro></app-nuovoteatro>
+</div>
 
 <p id="output"></p>
+
+
+
+<nuovoteatro-root [clicked]="clicked" #nuovoteatro></nuovoteatro-root>
+

@@ -7,6 +7,11 @@ export class Teatro implements MyTheatre {
   platea: Array<string>;
   palchi: Array<string>;
 
+  constructor(platea: Array<string>, palchi: Array<string>) {
+    this.platea=platea;
+    this.palchi=palchi;
+  }
+
 }
 
 @Component({
@@ -17,7 +22,7 @@ export class Teatro implements MyTheatre {
 
 export class AppComponent  {
 
-  clicked: boolean = "false";
+  clicked: boolean = false;
   
   constructor(private db: DbService) {}
 
