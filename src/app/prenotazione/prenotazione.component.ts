@@ -9,15 +9,20 @@ export class PrenotazioneComponent implements OnInit {
 
   @Input() chiave: string;
   @Input() prenotazione: string;
-  posti = ["", "", "", "", "", "", "", "", "", ""];
+
+  nfile = 5;
+  nposti = 10;
+  platea=Array(this.nfile).fill("").map(() => Array(this.nposti).fill("x"));
+  /* platea.map(fila,i); */
   nomeEl: HTMLElement;
 
   constructor() { }
 
   ngOnInit() {
-    this.posti[2] = "Luisa";
-    this.posti[3] = "Gianmarco";
-    console.log(this.posti);
+    console.log(this.platea);
+    /* this.posti[2] = "Luisa";
+    this.posti[3] = "Gianmarco"; 
+    console.log(this.posti); */
     console.log(this.chiave);
   }
 
