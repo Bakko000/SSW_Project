@@ -17,6 +17,8 @@ export class Teatro implements MyTheatre {
 
 export class AppComponent  {
 
+  clicked: boolean = "false";
+  
   constructor(private db: DbService) {}
 
   Login(key: string) {
@@ -25,7 +27,7 @@ export class AppComponent  {
     .subscribe({
       next: (content: any) => {
         if(content!=null) {
-        output.innerHTML = content; 
+        output.innerHTML = content;
         } else {
           output.innerHTML = "Teatro vuoto";
         }

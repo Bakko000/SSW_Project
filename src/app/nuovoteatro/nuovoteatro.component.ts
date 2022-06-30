@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, EventEmitter, OnInit } from '@angular/core';
 import { DbService } from "../db.service";
 
 
@@ -9,6 +9,8 @@ import { DbService } from "../db.service";
 
 export class NuovoTeatroComponent implements OnInit {
 
+  @Input() clicked:bool;
+
   constructor(private db: DbService) {}
 
   newTheatre() {
@@ -16,8 +18,8 @@ export class NuovoTeatroComponent implements OnInit {
     this.db.newKey()
     .subscribe({
       next: (content: any) => { 
-        output.innerHTML="Creato il nuovo teatro con chiave:" + content;
-        var clicked: boolean = true;
+        output.innerHTML="Creato il nuovo teatro con chiave: " + content;
+        console.log();
       },
       error: err => { 
         console.error(err.error);
@@ -28,6 +30,8 @@ export class NuovoTeatroComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.clicked);
+    
   }
 
 }

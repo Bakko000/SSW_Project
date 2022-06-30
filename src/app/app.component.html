@@ -10,11 +10,10 @@
 <p>
 
   <button (click)="nuovoteatro.newTheatre()">Crea nuovo teatro</button>
-   
-  <app-nuovoteatro *ngIf="clicked" #nuovoteatro></app-nuovoteatro>
 
-  
 
 </p>
 
-<p id="output"></p> 
+<app-nuovoteatro [clicked]="clicked" #nuovoteatro></app-nuovoteatro>
+
+<p id="output"></p>
