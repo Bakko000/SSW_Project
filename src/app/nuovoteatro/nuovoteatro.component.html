@@ -1,8 +1,9 @@
 <div *ngIf="clicked">
   <h3>Configura il teatro inserendo numero file per i palchi e per la platea</h3>
-  <p><label for="palchiInput">N file palchi</label><input id="palchiInput" type="text"
-[(ngModel)]="palchi">
-  </p>
- <p><label for="platea">N file platea</label><input #platea/></p>
- <button #confirm (click)="CreateTheatre()">Conferma</button>
+
+  <form>
+  <p><label for="filepalchi">N file palchi</label><input #filepalchi [(ngModel)]="filepalchi" name="filepalchi"></p>
+  <p><label for="fileplatea">N file platea</label><input #fileplatea [(ngModel)]="fileplatea" name="fileplatea"></p>
+  <button (click)="CreateTheatre()">Conferma</button>
+</form>
 </div>

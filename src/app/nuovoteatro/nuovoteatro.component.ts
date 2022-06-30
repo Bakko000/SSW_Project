@@ -1,6 +1,7 @@
-import { Component, Input, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, EventEmitter, OnInit, NgModule } from '@angular/core';
 import { DbService } from "../db.service";
-import { Teatro } from "../app.component"
+import { Teatro } from "../app.component";
+import { AbstractControl, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 
 @Component({
@@ -31,10 +32,11 @@ export class NuovoTeatroComponent implements OnInit {
     });
   }
 
-  CreateTheatre() {
-    
+  filepalchi: string;
+  fileplatea: string;
 
-   
+  CreateTheatre() {
+    console.log("Creato un nuovo teatro con " + filepalchi + " file di palchi e " + fileplatea + " file di platea" );
   }
 
   ngOnInit() {
