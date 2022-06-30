@@ -30,8 +30,8 @@ export class NuovoTeatroComponent implements OnInit {
     });
   }
 
-  filepalchi: string;
-  fileplatea: string;
+ /* filepalchi: string;
+  fileplatea: string; */
 
   CreateTheatre() {
     console.log("Creato un nuovo teatro con " + filepalchi + " file di palchi e " + fileplatea + " file di platea" );
