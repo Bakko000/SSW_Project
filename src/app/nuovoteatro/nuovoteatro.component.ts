@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, NgModule } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { DbService } from "../db.service";
 
 
@@ -31,12 +31,18 @@ export class NuovoTeatroComponent implements OnInit {
     });
   }
 
- /* filepalchi: string;
-  fileplatea: string;
+  filepalchi: number;
+  fileplatea: number;
 
   CreateTheatre() {
-    console.log("Creato un nuovo teatro con " + this.filepalchi + " file di palchi e " + this.fileplatea + " file di platea" ); 
-  } */
+      if(!isNaN(this.filepalchi) && !isNaN(this.fileplatea)) {
+
+        console.log("Creato un nuovo teatro di " + this.filepalchi + " file per i palchi e di " + this.fileplatea + " file per la platea");
+      } else {
+        console.log("Inserisci un numero");
+      }
+    
+  } 
 
   ngOnInit() {
     console.log(this.clicked);

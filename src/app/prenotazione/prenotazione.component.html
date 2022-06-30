@@ -1,1 +1,9 @@
-<p *ngIf="chiave!=''">Tabella Prenotazioni per teatro con chiave {{chiave}}</p>
+<div *ngIf="prenotazione!=''">
+<p>Prenotazione di {{prenotazione}}</p>
+
+  <ul>
+    <button value={{posto}} (click)="mostraNome($event)" *ngFor="let posto of posti; let indexOfelement=index;">P{{indexOfelement}}</button>
+  </ul>
+
+<p id="nome"></p>
+</div>

@@ -16,7 +16,6 @@ export class DbService {
   public checkKey(key: string): Observable<string> {
     return this.http.get<string>(this.baseurl+"/get?key="+key);
   }
-
   public newKey(): Observable<string> {
     return this.http.get<string>(this.baseurl+"/new?secret=ssw2022");
   }

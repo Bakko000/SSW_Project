@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Teatro } from '../app.component'
 
 @Component({
   selector: 'app-nominativo',
@@ -8,9 +7,22 @@ import { Teatro } from '../app.component'
 })
 export class NominativoComponent implements OnInit {
 
+  @Input() chiave: string;
+  prenotazione: string = '';
+
   constructor() { }
 
+  Prenota(nominativo: string) {
+    this.prenotazione = nominativo;
+    console.log("Accesso alla prenotazione a nome di: " + this.prenotazione);
+  }
+
+  Reset(){
+    console.log("Teatro svuotato");
+  }
+
   ngOnInit() {
+    console.log(this.chiave);
   }
 
 }
