@@ -11,12 +11,13 @@ export class NuovoTeatroComponent implements OnInit {
 
   @Input() clicked: boolean;
   @Input() chiave: string;
+  @Input() prenotazione: string;
 
   constructor(private db: DbService) {}
 
   newTheatre() {
     this.clicked = true;
-    const output = <HTMLElement>document.getElementById("output");
+    /*const output = <HTMLElement>document.getElementById("output");
     this.db.newKey()
     .subscribe({
       next: (content: any) => { 
@@ -27,8 +28,8 @@ export class NuovoTeatroComponent implements OnInit {
         console.error(err.error);
         console.log(this.db.baseurl+"/new?secret=ssw2022");
         output.innerHTML = "Il teatro selezionato non esiste";
-      }
-    });
+      } 
+    }); */
   }
 
   filepalchi: number;
