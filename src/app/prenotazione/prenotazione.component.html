@@ -2,7 +2,7 @@
 <p>Prenotazione di {{prenotazione}}</p>
 
   <ul>
-    <button value={{posto}} (click)="mostraNome($event)" *ngFor="let posto of platea; let indexOfelement=index;">P{{indexOfelement+1}}</button>
+    <button value={{posto}} (click)="mostraNome($event)" *ngFor="let posto of prenotazioni; let indexOfelement=index;">P{{indexOfelement+1}}</button>
   </ul>
 
 <p id="nome"></p>
