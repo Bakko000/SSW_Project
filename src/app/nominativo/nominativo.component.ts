@@ -15,7 +15,7 @@ export class NominativoComponent implements OnInit {
   Prenota(nominativo: string) {
     this.prenotazione = nominativo;
     console.log("Accesso alla prenotazione a nome di: " + this.prenotazione);
-  }
+  } 
 
   Reset(){
     console.log("Teatro svuotato");
