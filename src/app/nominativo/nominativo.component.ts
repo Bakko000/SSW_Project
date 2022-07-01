@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, Output, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-nominativo',
@@ -8,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class NominativoComponent implements OnInit {
 
   @Input() chiave: string;
-  prenotazione: string = '';
+  @Output() prenotazione: string = '';
 
   constructor() { }
 
