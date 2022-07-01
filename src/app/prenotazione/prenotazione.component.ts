@@ -12,30 +12,28 @@ export class PrenotazioneComponent implements OnInit {
 
   nfile = 5;
   nposti = 10;
-  p: any[];
-  c: any[];
-  fila: any[];
   platea=Array(this.nfile).fill("").map(() => Array(this.nposti).fill("x"));
-  
-  nomeEl: HTMLElement;
-
-  prenotazioni = this.platea.map( (fila) => this.platea)
+  btn: HTMLElement;
 
   constructor() { }
 
   ngOnInit() {
+
+    const out: HTMLElement = document.getElementById('prenota') as HTMLElement;
+    this.prenotazioni = this.platea.map((fila, i) => {
+      this.p = fila.map((nome, j) => {
+        this.btn = document.createElement("button");
+        //out.appendChild(this.btn);
+        this.btn.style.color = nome !== 'x' ? 'red' : 'green';
+        this.btn.innerHTML = 'P' + (j + 1) + (i + 1);
+        this.btn.value = nome;
+        this.btn.addEventListener('click', this.mostraNome);
+        return this.btn;
+      });
+    });
+
     this.platea[2][1] = 'Alessio';
     this.platea[3][4] = 'Gianna';
-    console.log(this.prenotazioni);
-    /*this.prenotazioni = this.platea.map( (fila,i) => {
-     this.p=fila.map( (nome,j) => {
-      })
-    }) 
-    console.log(this.prenotazioni) */
-    /* this.posti[2] = "Luisa";
-    this.posti[3] = "Gianmarco"; 
-    console.log(this.posti); */
-    console.log(this.chiave);
   }
 
   mostraNome(event) {
