@@ -61,7 +61,7 @@ export class PrenotazioneComponent implements OnInit {
     this.MyTheatre.palchi[2][1] = 'Luigi'; 
 
     var plateaPrenotazione = new MostraTeatro(this.MyTheatre.platea, 'platea');
-    var palchiPrenotazione = new MostraTeatro(this.MyTheatre.platea, 'palchi'); 
+    var palchiPrenotazione = new MostraTeatro(this.MyTheatre.palchi, 'palchi'); 
 
   }
 

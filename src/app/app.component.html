@@ -1,5 +1,5 @@
 <h1>Prenotazioni teatro</h1>
-<div *ngIf="chiave==''">
+<div *ngIf="chiave=='' && prenotazioni!=''">
 <p>
   <label for="chiave">Inserisci la chiave</label> 
   <input #chiave (keyup.enter)="Login(chiave.value);chiave.value=''" />

@@ -34,23 +34,20 @@ export class NuovoTeatroComponent implements OnInit {
     }); */
   }
 
-  filepalchi: number;
-  fileplatea: number;
+  filepalchi: string;
+  fileplatea: string;
   nposti: number = 10;
 
   public CreateTheatre() {
-      if(!isNaN(this.filepalchi) && !isNaN(this.fileplatea)) {
 
-       var NuovoTeatro = new Teatro([],[],this.nposti, this.fileplatea, this.nposti, this.filepalchi);
-       
+       var NuovoTeatro = new Teatro([],[],this.nposti, parseInt(this.fileplatea), this.nposti, parseInt(this.filepalchi));
+
        console.log("Creato un nuovo teatro di " + NuovoTeatro.nfilepalchi + " file per i palchi e di " + NuovoTeatro.nfileplatea + " file per la platea");
        
-       var NuovaplateaPrenotazione = new MostraTeatro(NuovoTeatro.platea, 'platea');
-       var NuovapalchiPrenotazione = new MostraTeatro(NuovoTeatro.platea, 'palchi'); 
+      var NuovaplateaPrenotazione = new MostraTeatro(NuovoTeatro.platea, 'platea');
+      var NuovapalchiPrenotazione = new MostraTeatro(NuovoTeatro.palchi, 'palchi');
 
-      } else {
-        console.log("Inserisci un numero");
-      }
+       console.log(NuovoTeatro);
     
   } 
 

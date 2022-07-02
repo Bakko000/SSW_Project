@@ -11,8 +11,8 @@ export class Teatro {
 
   constructor(platea: any[] = [], palchi: any[] = [], npostiplatea: number, nfileplatea: number, npostipalchi: number, 
     nfilepalchi: number) {
-    this.platea = new Array(this.nfileplatea).fill('').map(() => new Array(this.npostiplatea).fill('x'));
-    this.palchi = new Array(this.nfilepalchi).fill('').map(() => new Array(this.nfilepalchi).fill('x'));
+    this.platea = new Array(nfileplatea).fill('').map(() => new Array(npostiplatea).fill('x'));
+    this.palchi = new Array(nfilepalchi).fill('').map(() => new Array(npostipalchi).fill('x'));
     this.npostiplatea= npostiplatea;
     this.nfileplatea= nfileplatea;
     this.npostipalchi= npostipalchi;

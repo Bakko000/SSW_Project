@@ -8,7 +8,7 @@ import { Component, Input, Output, OnInit } from '@angular/core';
 export class NominativoComponent implements OnInit {
 
   @Input() chiave: string;
-  @Output() prenotazione: string = '';
+  @Output() prenotazione: string ='';
 
   constructor() { }
 
