@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DbService } from "../db.service";
-import { MostraTeatro } from '../prenotazione.component';
 import { Teatro } from '../app.component';
+import { MostraTeatro } from '../prenotazione/prenotazione.component';
 
 
 @Component({
@@ -42,6 +42,7 @@ export class NuovoTeatroComponent implements OnInit {
       if(!isNaN(this.filepalchi) && !isNaN(this.fileplatea)) {
 
        var NuovoTeatro = new Teatro([],[],this.nposti, this.fileplatea, this.nposti, this.filepalchi);
+       
        console.log("Creato un nuovo teatro di " + NuovoTeatro.nfilepalchi + " file per i palchi e di " + NuovoTeatro.nfileplatea + " file per la platea");
        
        var NuovaplateaPrenotazione = new MostraTeatro(NuovoTeatro.platea, 'platea');
