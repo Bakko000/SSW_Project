@@ -19,10 +19,12 @@ export class PrenotazioneComponent implements OnInit {
   @Input() chiave: string;
   @Input() prenotazione: string;
 
-  nfile = <number>7;
-  prenotazioni: [];
-  nposti = <number>10;
+  nfile = 5;
+  nposti = 10;
+  p: Array<HTMLElement>;
   platea: Array<Array<string>> = new Array(this.nfile).fill('').map(() => new Array(this.nposti).fill('x'));
+  btn: HTMLButtonElement;
+  br: HTMLElement;
 
   constructor(private renderer: Renderer2) {}
 
@@ -30,17 +32,24 @@ export class PrenotazioneComponent implements OnInit {
     
     this.platea[2][1]= 'Alessio';
     this.platea[3][4]= 'Gianna';
-    this.prenotazioni = this.platea.map((fila, i) => {
+    var prenotazioni = this.platea.map((fila, i) => {
       this.p = fila.map((nome, j) => {
-        btn = <HTMLButtonElement>this.renderer.createElement('button');
-        this.renderer.appendChild(this.prenota.nativeElement, btn);
-        btn.style.color = nome !== 'x' ? 'red' : 'green';
-        btn.innerHTML = 'P' + (<number>j + 1) + (<number>i + 1);
-        btn.value = nome == 'x' ? 'Libero' : nome;
-        btn.addEventListener('click', this.mostraNome);
+        this.btn = this.renderer.createElement('button');
+        this.renderer.appendChild(this.prenota.nativeElement, this.btn);
+        this.btn.style.color = nome !== 'x' ? 'red' : 'green';
+        this.btn.innerHTML = 'P' + (<number>j + 1) + (<number>i + 1);
+        this.btn.value = nome == 'x' ? 'Libero' : nome;
+        this.btn.addEventListener('click', this.mostraNome);
         return this.btn;
       });
-    });
+      this.br = this.renderer.createElement("br");
+      this.renderer.appendChild(this.prenota.nativeElement, this.br)
+
+  });
+
+    console.log(this.p);
+    console.log(prenotazioni);
+    console.log(this.platea);
 
   }
 
@@ -48,16 +57,14 @@ export class PrenotazioneComponent implements OnInit {
     this.nomeEl = document.getElementById('nome');
     var valueAttr = event.srcElement.attributes.value;
     var value = valueAttr.nodeValue;
-    if(this.style.color!="red") {
-      this.style.color="red";
-      this.value= this.prenotazione;
-      console.log(this.prenotazione);
+    if(this.style.color != "red") {
+      this.style.color = "red";
     } else {
       this.nomeEl.innerHTML = value;
     }
   }
 
   ngOnInit() {  
-    console.log(this.prenotazione);
+    
   }
 }
