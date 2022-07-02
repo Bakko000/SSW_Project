@@ -1,14 +1,22 @@
 import { Component } from '@angular/core';
 import { DbService } from './db.service';
-import { MyTheatre } from './interfaccia/theatre';
 
-export class Teatro implements MyTheatre {
-  platea: Array<string>;
-  palchi: Array<string>;
+export class Teatro {
+  platea: any[] = [];
+  palchi: any[] = [];
+  npostiplatea: number = 10;
+  nfileplatea: number = 5;
+  npostipalchi: number = 6;
+  nfilepalchi: number = 4;
 
-  constructor(platea: Array<string>, palchi: Array<string>) {
-    this.platea = platea;
-    this.palchi = palchi;
+  constructor(platea: any[] = [], palchi: any[] = [], npostiplatea: number, nfileplatea: number, npostipalchi: number, 
+    nfilepalchi: number) {
+    this.platea = new Array(this.nfileplatea).fill('').map(() => new Array(this.npostiplatea).fill('x'));
+    this.palchi = new Array(this.nfilepalchi).fill('').map(() => new Array(this.nfilepalchi).fill('x'));
+    this.npostiplatea= npostiplatea;
+    this.nfileplatea= nfileplatea;
+    this.npostipalchi= npostipalchi;
+    this.nfilepalchi= nfilepalchi;
   }
 }
 
@@ -17,6 +25,7 @@ export class Teatro implements MyTheatre {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
+
 export class AppComponent {
   clicked: boolean = false;
   chiave: string = '';

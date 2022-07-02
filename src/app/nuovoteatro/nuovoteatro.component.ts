@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DbService } from "../db.service";
+import { MostraTeatro } from '../prenotazione.component';
+import { Teatro } from '../app.component';
 
 
 @Component({
@@ -15,10 +17,10 @@ export class NuovoTeatroComponent implements OnInit {
 
   constructor(private db: DbService) {}
 
-  newTheatre() {
+  public newTheatre() {
     this.clicked = true;
     const output = <HTMLElement>document.getElementById("output");
-    this.db.newKey()
+    /* this.db.newKey()
     .subscribe({
       next: (content: any) => { 
         console.log("Creato il nuovo teatro con chiave: " + content);
@@ -29,16 +31,22 @@ export class NuovoTeatroComponent implements OnInit {
         console.log(this.db.baseurl+"/new?secret=ssw2022");
         output.innerHTML = "Il teatro selezionato non esiste";
       } 
-    });
+    }); */
   }
 
   filepalchi: number;
   fileplatea: number;
+  nposti: number = 10;
 
-  CreateTheatre() {
+  public CreateTheatre() {
       if(!isNaN(this.filepalchi) && !isNaN(this.fileplatea)) {
 
-        console.log("Creato un nuovo teatro di " + this.filepalchi + " file per i palchi e di " + this.fileplatea + " file per la platea");
+       var NuovoTeatro = new Teatro([],[],this.nposti, this.fileplatea, this.nposti, this.filepalchi);
+       console.log("Creato un nuovo teatro di " + NuovoTeatro.nfilepalchi + " file per i palchi e di " + NuovoTeatro.nfileplatea + " file per la platea");
+       
+       var NuovaplateaPrenotazione = new MostraTeatro(NuovoTeatro.platea, 'platea');
+       var NuovapalchiPrenotazione = new MostraTeatro(NuovoTeatro.platea, 'palchi'); 
+
       } else {
         console.log("Inserisci un numero");
       }
