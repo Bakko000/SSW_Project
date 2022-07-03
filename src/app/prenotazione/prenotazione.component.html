@@ -1,8 +1,5 @@
-<div *ngIf="prenotazione!=''">
-<p>Prenotazione di {{prenotazione}} del teatro con chiave {{chiave}}</p>
-
-   <!-- <button value={{posto}} (click)="mostraNome($event)" *ngFor="let posto of prenotazioni; let indexOfelement=index;">P{{indexOfelement+1}}</button> -->
-
+<div *ngIf="this.bookerid!='' && !this.clicked">
+<p>Prenotazione di {{bookerid}} del teatro con chiave {{chiave}}</p>
 <div id="platea"><h1>Platea</h1></div>
 <div id="palchi"><h1>Palchi</h1></div>
 <p id="nome"></p>

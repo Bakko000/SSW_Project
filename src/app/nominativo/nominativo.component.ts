@@ -1,4 +1,4 @@
-import { Component, Input, Output, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-nominativo',
@@ -8,13 +8,13 @@ import { Component, Input, Output, OnInit } from '@angular/core';
 export class NominativoComponent implements OnInit {
 
   @Input() chiave: string;
-  @Output() prenotazione: string ='';
+  @Input() bookerid: string ='';
 
   constructor() { }
 
   Prenota(nominativo: string) {
-    this.prenotazione = nominativo;
-    console.log("Accesso alla prenotazione a nome di: " + this.prenotazione);
+    this.bookerid = nominativo;
+    console.log("Accesso alla prenotazione a nome di: " + this.bookerid);
   } 
 
   Reset(){

@@ -13,12 +13,14 @@ export class NuovoTeatroComponent implements OnInit {
 
   @Input() clicked: boolean;
   @Input() chiave: string;
-  @Input() prenotazione: string;
+  @Input() bookerid: string='';
 
   constructor(private db: DbService) {}
 
   public newTheatre() {
     this.clicked = true;
+    console.log(this.clicked);
+    console.log(this.bookerid);
     const output = <HTMLElement>document.getElementById("output");
     /* this.db.newKey()
     .subscribe({
@@ -38,23 +40,26 @@ export class NuovoTeatroComponent implements OnInit {
   fileplatea: string;
   nposti: number = 10;
 
-  public CreateTheatre() {
+   public CreateTheatre() {
 
-       var NuovoTeatro = new Teatro([],[],this.nposti, parseInt(this.fileplatea), this.nposti, parseInt(this.filepalchi));
+      /* var NuovoTeatro = new Teatro([],[],this.nposti, parseInt(this.fileplatea), this.nposti, parseInt(this.filepalchi));
 
        console.log("Creato un nuovo teatro di " + NuovoTeatro.nfilepalchi + " file per i palchi e di " + NuovoTeatro.nfileplatea + " file per la platea");
+       console.log(this.clicked);
+       console.log(this.chiave);
+       console.log(this.bookerid);
        
       var NuovaplateaPrenotazione = new MostraTeatro(NuovoTeatro.platea, 'platea');
-      var NuovapalchiPrenotazione = new MostraTeatro(NuovoTeatro.palchi, 'palchi');
+      var NuovapalchiPrenotazione = new MostraTeatro(NuovoTeatro.palchi, 'palchi'); 
 
-       console.log(NuovoTeatro);
+       console.log(NuovoTeatro); */
+       console.log(this.clicked);
+       console.log(this.bookerid);
+
     
   } 
 
-  ngOnInit() {
-    console.log(this.clicked);
-    
-  }
+  ngOnInit() {}
 
 }
 

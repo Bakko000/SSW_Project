@@ -1,4 +1,5 @@
 import {Component, Input, OnInit}  from '@angular/core';
+/* import { Output } from '@angular/core/src/metadata/directives'; */
 import { Teatro } from '../app.component';
 
 export class MostraTeatro {
@@ -42,7 +43,7 @@ export class MostraTeatro {
 export class PrenotazioneComponent implements OnInit {
  
   @Input() chiave: string;
-  @Input() prenotazione: string;
+  @Input() bookerid: string;
 
   nfilePlatea = 5;
   npostiPlatea = 10;
@@ -55,6 +56,7 @@ export class PrenotazioneComponent implements OnInit {
 
   public Prenotare() {
     console.log(this.MyTheatre);
+    console.log(this.bookerid);
     
     this.MyTheatre.platea[2][1]= 'Alessio';
     this.MyTheatre.platea[3][4]= 'Gianna';
@@ -64,6 +66,15 @@ export class PrenotazioneComponent implements OnInit {
     var palchiPrenotazione = new MostraTeatro(this.MyTheatre.palchi, 'palchi'); 
 
   }
+
+  /*public GetBookerId(): string {
+    if(this.bookerid != '') {
+      return this.bookerid;
+    } else {
+      return undefined;
+    }
+  } */
+
 
   ngOnInit() {}
 }
