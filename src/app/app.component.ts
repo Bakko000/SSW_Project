@@ -27,8 +27,8 @@ export class Teatro {
 })
 
 export class AppComponent {
-  clicked: boolean = false;
-  chiave: string = '';
+  clicked: boolean = false;  // Variabile che controlla il click per l'aggiunta del teatro 
+  chiave: string = '';  // Variabile iniziale vuota che controlla l'esistenza di una chiave di accesso o meno
 
   constructor(private db: DbService) {}
 
@@ -39,7 +39,7 @@ export class AppComponent {
         if (content != null) {
           output.innerHTML = content;
         } else {
-          this.chiave = key;
+          this.chiave = key;   // Il teatro esiste, accedi e aggiorna la chiave
         }
         console.log('Accesso al teatro');
       },

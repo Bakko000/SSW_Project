@@ -9,6 +9,7 @@ export class NominativoComponent implements OnInit {
 
   @Input() chiave: string;
   @Input() bookerid: string ='';
+  @Input() newtheatre: boolean;
 
   constructor() { }
 

@@ -6,4 +6,4 @@
   <button (click)="CreateTheatre()">Conferma</button>
 </form>
 </div>
-<app-nominativo [bookerid]="bookerid" [chiave]="chiave"></app-nominativo>
+<app-nominativo *ngIf="newtheatre" [bookerid]="bookerid" [newtheatre]="newtheatre" [chiave]="chiave"></app-nominativo>
