@@ -36,16 +36,11 @@ export class AppComponent {
     const output = <HTMLElement>document.getElementById('output');
     this.db.checkKey(key).subscribe({
       next: (content: any) => {
-        if (content != null) {
-          output.innerHTML = content;
-        } else {
           this.chiave = key; // Il teatro esiste, accedi e aggiorna la chiave
           this.newtheatre = false; // E' necessario stabilire che non stiamo creando un nuovo teatro
-        }
       },
       error: (err) => {
         console.error(err.error);
-        console.log('Il teatro selezionato non esiste');
       },
     });
   }
