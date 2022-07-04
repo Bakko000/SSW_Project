@@ -62,12 +62,11 @@ export class PrenotazioneComponent implements OnInit {
 
   public Prenotare() {
 
-    this.MyTheatre.platea[2][1] = 'Alessio';
-    this.MyTheatre.platea[3][4] = 'Gianna';
-    this.MyTheatre.palchi[2][1] = 'Luigi';
+    if(document.querySelector("button") == undefined) {
 
     var plateaPrenotazione = new MostraTeatro(this.MyTheatre.platea, 'platea', this.bookerid);
     var palchiPrenotazione = new MostraTeatro(this.MyTheatre.palchi, 'palchi', this.bookerid);
+    }
   }
   
   ngOnInit() {}
