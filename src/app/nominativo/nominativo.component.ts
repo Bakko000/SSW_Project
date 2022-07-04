@@ -14,7 +14,6 @@ export class NominativoComponent implements OnInit {
 
   Prenota(nominativo: string) {
     this.bookerid = nominativo;
-    console.log('Accesso alla prenotazione a nome di: ' + this.bookerid);
   }
 
   Reset() {
