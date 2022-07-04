@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { DbService } from './db.service';
 
 export class Teatro {
@@ -9,14 +9,14 @@ export class Teatro {
   npostipalchi: number = 6;
   nfilepalchi: number = 4;
 
-  constructor(platea: any[] = [], palchi: any[] = [], npostiplatea: number, nfileplatea: number, npostipalchi: number, 
-    nfilepalchi: number) {
+  constructor(platea: any[] = [], palchi: any[] = [], npostiplatea: number, nfileplatea: number,
+    npostipalchi: number, nfilepalchi: number) {
     this.platea = new Array(nfileplatea).fill('').map(() => new Array(npostiplatea).fill('x'));
     this.palchi = new Array(nfilepalchi).fill('').map(() => new Array(npostipalchi).fill('x'));
-    this.npostiplatea= npostiplatea;
-    this.nfileplatea= nfileplatea;
-    this.npostipalchi= npostipalchi;
-    this.nfilepalchi= nfilepalchi;
+    this.npostiplatea = npostiplatea;
+    this.nfileplatea = nfileplatea;
+    this.npostipalchi = npostipalchi;
+    this.nfilepalchi = nfilepalchi;
   }
 }
 
@@ -25,10 +25,10 @@ export class Teatro {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-
 export class AppComponent {
-  clicked: boolean = false;  // Variabile che controlla il click per l'aggiunta del teatro 
-  chiave: string = '';  // Variabile iniziale vuota che controlla l'esistenza di una chiave di accesso o meno
+  @Input() newtheatre: boolean;
+  clicked: boolean = false; // Variabile che controlla il click per l'aggiunta del teatro
+  chiave: string = ''; // Variabile iniziale vuota che controlla l'esistenza di una chiave di accesso o meno, condivisa fra tutti i moduli
 
   constructor(private db: DbService) {}
 
@@ -39,9 +39,9 @@ export class AppComponent {
         if (content != null) {
           output.innerHTML = content;
         } else {
-          this.chiave = key;   // Il teatro esiste, accedi e aggiorna la chiave
+          this.chiave = key; // Il teatro esiste, accedi e aggiorna la chiave
+          this.newtheatre = false; // E' necessario stabilire che non stiamo creando un nuovo teatro
         }
-        console.log('Accesso al teatro');
       },
       error: (err) => {
         console.error(err.error);

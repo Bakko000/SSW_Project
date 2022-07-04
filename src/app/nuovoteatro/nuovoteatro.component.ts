@@ -1,8 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { DbService } from "../db.service";
 import { Teatro } from '../app.component';
-import { MostraTeatro } from '../prenotazione/prenotazione.component';
-
 
 @Component({
   selector: 'nuovoteatro-root',
@@ -13,14 +11,13 @@ export class NuovoTeatroComponent implements OnInit {
 
   @Input() clicked: boolean;
   @Input() chiave: string;
-  @Input() bookerid: string='';
-  newtheatre: boolean = false;
+  @Input() newtheatre: boolean = false;
 
   constructor(private db: DbService) {}
   
-
   public newTheatre() {
     this.clicked = true;
+    this.newtheatre = true;
     console.log(this.newtheatre);
     console.log(this.clicked);
     const output = <HTMLElement>document.getElementById("output");
@@ -39,34 +36,17 @@ export class NuovoTeatroComponent implements OnInit {
     });
   }
 
-  filepalchi: string;
-  fileplatea: string;
-  nome: string;
-  nposti: number = 10;
+  postiplatea: string;
+  postipalchi: string;
+  filepalchi: number = 4;
+  fileplatea: number = 7;
 
    public CreateTheatre() {
-      this.newtheatre = true;
       console.log(this.newtheatre);
-      this.clicked = false;
-      console.log(this.clicked);
-      this.bookerid = this.nome;
-      
-      var NuovoTeatro = new Teatro([],[],this.nposti, parseInt(this.fileplatea), this.nposti, parseInt(this.filepalchi));
-
-       console.log("Creato un nuovo teatro di " + NuovoTeatro.nfilepalchi + " file per i palchi e di " + NuovoTeatro.nfileplatea + " file per la platea");
-       console.log(this.clicked);
-       console.log(this.chiave);
-       console.log(this.bookerid);
-       
-      var NuovaplateaPrenotazione = new MostraTeatro(NuovoTeatro.platea, 'platea');
-      var NuovapalchiPrenotazione = new MostraTeatro(NuovoTeatro.palchi, 'palchi'); 
-
+      this.clicked = false;    
+      var NuovoTeatro = new Teatro([],[],parseInt(this.postiplatea), this.fileplatea, parseInt(this.postipalchi), this.filepalchi);
        console.log(NuovoTeatro);
-
-    
   } 
-
   ngOnInit() {}
-
 }
 
