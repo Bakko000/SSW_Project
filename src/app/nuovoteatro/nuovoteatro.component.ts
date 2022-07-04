@@ -41,6 +41,7 @@ export class NuovoTeatroComponent implements OnInit {
 
   filepalchi: string;
   fileplatea: string;
+  nome: string;
   nposti: number = 10;
 
    public CreateTheatre() {
@@ -48,8 +49,9 @@ export class NuovoTeatroComponent implements OnInit {
       console.log(this.newtheatre);
       this.clicked = false;
       console.log(this.clicked);
+      this.bookerid = this.nome;
       
-      /* var NuovoTeatro = new Teatro([],[],this.nposti, parseInt(this.fileplatea), this.nposti, parseInt(this.filepalchi));
+      var NuovoTeatro = new Teatro([],[],this.nposti, parseInt(this.fileplatea), this.nposti, parseInt(this.filepalchi));
 
        console.log("Creato un nuovo teatro di " + NuovoTeatro.nfilepalchi + " file per i palchi e di " + NuovoTeatro.nfileplatea + " file per la platea");
        console.log(this.clicked);
@@ -59,7 +61,7 @@ export class NuovoTeatroComponent implements OnInit {
       var NuovaplateaPrenotazione = new MostraTeatro(NuovoTeatro.platea, 'platea');
       var NuovapalchiPrenotazione = new MostraTeatro(NuovoTeatro.palchi, 'palchi'); 
 
-       console.log(NuovoTeatro); */
+       console.log(NuovoTeatro);
 
     
   } 

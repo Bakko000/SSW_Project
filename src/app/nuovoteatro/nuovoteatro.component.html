@@ -1,9 +1,10 @@
 <div *ngIf="clicked">
-<h3>Configura il teatro inserendo numero file per i palchi e per la platea</h3>
+<h3>Configura il teatro e scrivi il tuo nominativo</h3>
 <form>
   <p><label for="filepalchi">N file palchi</label><input [(ngModel)]="filepalchi" name="filepalchi"></p>
   <p><label for="fileplatea">N file platea</label><input [(ngModel)]="fileplatea" name="fileplatea"></p>
+  <p><label for="nome">Nominativo</label><input [(ngModel)]="nome" name="nome"></p>
   <button (click)="CreateTheatre()">Conferma</button>
 </form>
 </div>
-<app-nominativo *ngIf="newtheatre" [bookerid]="bookerid" [newtheatre]="newtheatre" [chiave]="chiave"></app-nominativo>
+<app-prenotazione [bookerid]="bookerid"  [chiave]="chiave"></app-prenotazione>
