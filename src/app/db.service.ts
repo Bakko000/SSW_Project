@@ -17,4 +17,7 @@ export class DbService {
   public newKey(): Observable<string> {
     return this.http.get<string>(this.baseurl+"/new?secret=ssw2022");
   }
+  public newTheatre(key, body): Observable<string> {
+    return this.http.post<string>(this.baseurl+"/set?key="+key, body);
+  }
 }
