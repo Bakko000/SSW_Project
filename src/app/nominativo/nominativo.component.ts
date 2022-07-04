@@ -17,7 +17,6 @@ export class NominativoComponent implements OnInit {
     console.log('Accesso alla prenotazione a nome di: ' + this.bookerid);
   }
 
-
   Reset() {
     console.log('Teatro svuotato');
   }
