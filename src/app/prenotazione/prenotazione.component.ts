@@ -49,6 +49,8 @@ export class PrenotazioneComponent implements OnInit {
 
   public Prenotare() {
 
+    if(document.querySelector("button") != undefined) {
+
     this.db.getTheatre(this.chiave).subscribe({
       next: (content: any) => {
           var json = JSON.parse(content);
@@ -69,6 +71,7 @@ export class PrenotazioneComponent implements OnInit {
       },
     });
   }
+}
 
   ngOnInit() {}
 }
