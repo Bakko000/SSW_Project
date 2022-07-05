@@ -59,7 +59,6 @@ export class PrenotazioneComponent implements OnInit {
     if(!this.stop) {
     this.db.getTheatre(this.chiave).subscribe({
       next: (content: any) => {
-        console.log(content);
           var prenotazione = JSON.parse(content);
           let postipla = parseInt(prenotazione.slice(0,1));
           let postipal = parseInt(prenotazione.slice(1,2));
