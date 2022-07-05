@@ -10,9 +10,12 @@ export class PrenotazioneComponent implements OnInit {
   @Input() chiave: string;
   @Input() prenotazione: string;
 
-  nfile = 6;
-  nposti = 6;
+  nfile = 7;
+  nposti = 10;
+  nfilePalchi = 4;
+  npostiPalchi = 6;
   platea=Array(this.nfile).fill("").map(() => Array(this.nposti).fill("x"));
+  palchi=Array(this.nfilePalchi).fill("").map(() => Array(this.npostiPalchi).fill("x"));
   
   nomeEl: HTMLElement;
 
@@ -21,14 +24,6 @@ export class PrenotazioneComponent implements OnInit {
   ngOnInit() {
     this.platea[2][1] = 'Alessio';
     this.platea[3][4] = 'Gianna';
-    /*this.prenotazioni = this.platea.map( (fila,i) => {
-     this.p=fila.map( (nome,j) => {
-      })
-    }) 
-    console.log(this.prenotazioni) */
-    /* this.posti[2] = "Luisa";
-    this.posti[3] = "Gianmarco"; 
-    console.log(this.posti); */
     console.log(this.chiave);
   }
 
