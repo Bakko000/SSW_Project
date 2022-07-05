@@ -59,14 +59,13 @@ export class PrenotazioneComponent implements OnInit {
     if(!this.stop) {
     this.db.getTheatre(this.chiave).subscribe({
       next: (content: any) => {
-          var json = JSON.parse(content);
-          var npostipalchij = json.npostipalchi;
-          var npostiplateaj = json.npostiplatea;
-          console.log(npostipalchij);
-          console.log(npostiplateaj);
-          var platea= json.slice(0,7);
-          var palchi= json.slice(7);
-          var MyTheatre = new Teatro(platea, palchi, 10, 7, 6, 4);
+        console.log(content);
+          var prenotazione = JSON.parse(content);
+          let postipla = parseInt(prenotazione.slice(0,1));
+          let postipal = parseInt(prenotazione.slice(1,2));
+          let prenoplatea = prenotazione.slice(2,9);
+          let prenopalchi = prenotazione.slice(9,);
+          var MyTheatre = new Teatro(prenoplatea, prenopalchi, postipla, 7, postipal, 4);
 
           var plateaPrenotazione = new MostraTeatro(MyTheatre.platea, 'platea', this.bookername);
           var palchiPrenotazione = new MostraTeatro(MyTheatre.palchi, 'palchi', this.bookername);

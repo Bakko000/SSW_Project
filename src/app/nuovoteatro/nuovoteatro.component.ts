@@ -17,34 +17,43 @@ export class NuovoTeatroComponent implements OnInit {
     this.clicked = true;
     this.newtheatre = true;
     const output = <HTMLElement>document.getElementById('output');
-   /* this.db.newKey().subscribe({
+   this.db.newKey().subscribe({
       next: (content: any) => {
         this.chiave = content;
       },
       error: (err) => {
         console.error(err.error);
       },
-    }); */
+    });
   }
 
   postiplatea: string;
   postipalchi: string;
-  dimensioni: Array<string>;
+  dimensioni: any[] = [];
 
   public CreateTheatre() {
     this.clicked = false;
-    this.dimensioni[1] = "ciao";
+    this.dimensioni[0] = this.postiplatea;
+    this.dimensioni[1] = this.postipalchi;
     var NuovoTeatro = new Teatro([],[], parseInt(this.postiplatea), 7,  parseInt(this.postipalchi), 4);
-    var prenotazione = (NuovoTeatro.platea).concat(NuovoTeatro.palchi);
-    console.log(this.dimensioni);
-   /* this.db.setTheatre(this.chiave, prenotazione).subscribe({
+    var prenotazione = this.dimensioni.concat(NuovoTeatro.platea).concat(NuovoTeatro.palchi);
+    let postipla = prenotazione.slice(0,1);
+    let postipal = prenotazione.slice(1,2);
+    let platea = prenotazione.slice(2,9);
+    let palchi = prenotazione.slice(9,)
+    console.log(platea);
+    console.log(palchi);
+    console.log(postipal);
+    console.log(postipla);
+    console.log(prenotazione);
+   this.db.setTheatre(this.chiave, prenotazione).subscribe({
       next: (content: any) => {
         console.log(content);
       },
       error: (err) => {
         console.error(err.error);
       },
-    }); */
+    }); 
   }
   ngOnInit() {}
 }
