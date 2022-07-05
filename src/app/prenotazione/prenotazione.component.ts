@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Teatro } from '../app.component';
+import { DbService } from '../db.service';
 
 export class MostraTeatro {
   prenotazione = [];
@@ -48,26 +49,33 @@ export class MostraTeatro {
 export class PrenotazioneComponent implements OnInit {
   @Input() chiave: string;
   @Input() bookerid: string = '';
-  prenota: boolean;
+  repeat: boolean = false;
 
-  nfilePlatea = 5;
-  npostiPlatea = 10;
-  nfilePalchi = 4;
-  npostiPalchi = 6;
-
-  MyTheatre = new Teatro([],[], this.npostiPlatea, this.nfilePlatea, this.npostiPalchi,this.nfilePalchi
-  );
-
-  constructor() {}
+  constructor(private db: DbService) {}
 
   public Prenotare() {
 
-    if(document.querySelector("button") == undefined) {
+    if(!this.repeat) {
 
-    var plateaPrenotazione = new MostraTeatro(this.MyTheatre.platea, 'platea', this.bookerid);
-    var palchiPrenotazione = new MostraTeatro(this.MyTheatre.palchi, 'palchi', this.bookerid);
-    }
+    this.db.getTheatre(this.chiave).subscribe({
+      next: (content: any) => {
+          var json = JSON.parse(content);
+          var npostipalchij = json.npostipalchi;
+          var nfilepalchij = json.nfilepalchi;
+          var npostiplateaj = json.npostiplatea;
+          var nfileplateaj = json.nfileplatea;
+          var MyTheatre = new Teatro([],[], npostiplateaj, nfileplateaj, npostipalchij, nfilepalchij);
+
+          var plateaPrenotazione = new MostraTeatro(MyTheatre.platea, 'platea', this.bookerid);
+          var palchiPrenotazione = new MostraTeatro(MyTheatre.palchi, 'palchi', this.bookerid);
+      },
+      error: (err) => {
+        console.error(err.error);
+      },
+    });
+    this.repeat = true;
   }
-  
+}
+
   ngOnInit() {}
 }
