@@ -26,7 +26,7 @@ export class Teatro {
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  @Input() newtheatre: boolean;
+  @Input() newtheatre: boolean; 
   clicked: boolean = false; // Variabile che controlla il click per l'aggiunta del teatro
   chiave: string = ''; // Variabile iniziale vuota che controlla l'esistenza di una chiave di accesso o meno, condivisa fra tutti i moduli
 
@@ -36,8 +36,12 @@ export class AppComponent {
     const output = <HTMLElement>document.getElementById('output');
     this.db.getTheatre(key).subscribe({
       next: (content: any) => {
+        if(content!=null) {
           this.chiave = key; // Il teatro esiste, accedi e aggiorna la chiave
-          this.newtheatre = false; // E' necessario stabilire che non stiamo creando un nuovo teatro
+          this.newtheatre = false; // E' necessario stabilire che non stiamo creando un nuovo teatro per far scomparire il template nei casi necessari
+        } else {
+          console.log("Teatro vuoto");
+        }
       },
       error: (err) => {
         console.error(err.error);

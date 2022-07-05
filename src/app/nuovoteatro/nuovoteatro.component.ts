@@ -17,32 +17,34 @@ export class NuovoTeatroComponent implements OnInit {
     this.clicked = true;
     this.newtheatre = true;
     const output = <HTMLElement>document.getElementById('output');
-    this.db.newKey().subscribe({
+   /* this.db.newKey().subscribe({
       next: (content: any) => {
         this.chiave = content;
       },
       error: (err) => {
         console.error(err.error);
       },
-    });
+    }); */
   }
 
   postiplatea: string;
   postipalchi: string;
-  filepalchi: number = 4;
-  fileplatea: number = 7;
+  dimensioni: Array<string>;
 
   public CreateTheatre() {
     this.clicked = false;
-    var NuovoTeatro = new Teatro([],[], parseInt(this.postiplatea), this.fileplatea,  parseInt(this.postipalchi),this.filepalchi);
-    this.db.setTheatre(this.chiave, NuovoTeatro).subscribe({
+    this.dimensioni[1] = "ciao";
+    var NuovoTeatro = new Teatro([],[], parseInt(this.postiplatea), 7,  parseInt(this.postipalchi), 4);
+    var prenotazione = (NuovoTeatro.platea).concat(NuovoTeatro.palchi);
+    console.log(this.dimensioni);
+   /* this.db.setTheatre(this.chiave, prenotazione).subscribe({
       next: (content: any) => {
         console.log(content);
       },
       error: (err) => {
         console.error(err.error);
       },
-    });
+    }); */
   }
   ngOnInit() {}
 }

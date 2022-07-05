@@ -8,29 +8,24 @@ import { DbService } from '../db.service';
 })
 export class NominativoComponent implements OnInit {
   @Input() chiave: string;
-  @Input() bookerid: string = '';
+  @Input() bookername: string = '';
   @Input() newtheatre: boolean;
 
   constructor(private db: DbService) {}
 
   public Prenota(nominativo: string) {
-    this.bookerid = nominativo;
+    this.bookername = nominativo;
   }
-
   public Reset() {
-    var body = "''";
+    var body = {};
     this.db.setTheatre(this.chiave, body).subscribe({
       next: (content: any) => {
-        console.log(this.chiave);
-        console.log(content);
+        console.log("Teatro svuotato");
       },
       error: (err) => {
         console.error(err.error);
       },
     });
-    console.log(this.chiave);
-    console.log(body);
   }
-
   ngOnInit() {}
 }

@@ -3,12 +3,12 @@ import { Teatro } from '../app.component';
 import { DbService } from '../db.service';
 
 export class MostraTeatro {
-  prenotazione = [];
-  bookerid: string;
-  constructor(posti, settore, bookerid) {
-    this.bookerid = bookerid;
+  parterre = [];
+  bookername: string;
+  constructor(posti, settore, bookername) {
+    this.bookername = bookername;
     var element = document.getElementById(settore);
-    this.prenotazione = posti.map((fila, i) => {
+    this.parterre = posti.map((fila, i) => {
       var p = fila.map((nome, j) => {
         var btn = document.createElement('button');
         if (settore == 'platea') {
@@ -21,7 +21,7 @@ export class MostraTeatro {
         btn.innerHTML = 'P' + (j + 1) + (i + 1);
         btn.value = nome == 'x' ? 'Libero' : nome;
         btn.addEventListener('click', this.selezionaPosto, false);
-        btn.booker = this.bookerid;
+        btn.booker = this.bookername;
         return btn;
       });
       element.appendChild(document.createElement('br'));
@@ -29,7 +29,7 @@ export class MostraTeatro {
     });
   }
 
-  private selezionaPosto(event) {
+  public selezionaPosto(event) {
     const nomeEl = document.getElementById('nome');
     if (this.style.color != 'red') {
       this.style.color = 'red';
@@ -49,35 +49,34 @@ export class MostraTeatro {
 
 export class PrenotazioneComponent implements OnInit {
   @Input() chiave: string;
-  @Input() bookerid: string = '';
-  @Output() prenotazione = new EventEmitter<string>();
-  repeat: boolean = false;
-
+  @Input() bookername: string = '';
+  stop: boolean = false;
+  
   constructor(private db: DbService) {}
 
   public Prenotare() {
 
-    if(!this.repeat) {
-
+    if(!this.stop) {
     this.db.getTheatre(this.chiave).subscribe({
       next: (content: any) => {
           var json = JSON.parse(content);
           var npostipalchij = json.npostipalchi;
-          var nfilepalchij = json.nfilepalchi;
           var npostiplateaj = json.npostiplatea;
-          var nfileplateaj = json.nfileplatea;
-          var MyTheatre = new Teatro([],[], npostiplateaj, nfileplateaj, npostipalchij, nfilepalchij);
+          console.log(npostipalchij);
+          console.log(npostiplateaj);
+          var platea= json.slice(0,7);
+          var palchi= json.slice(7);
+          var MyTheatre = new Teatro(platea, palchi, 10, 7, 6, 4);
 
-          var plateaPrenotazione = new MostraTeatro(MyTheatre.platea, 'platea', this.bookerid);
-          var palchiPrenotazione = new MostraTeatro(MyTheatre.palchi, 'palchi', this.bookerid);
+          var plateaPrenotazione = new MostraTeatro(MyTheatre.platea, 'platea', this.bookername);
+          var palchiPrenotazione = new MostraTeatro(MyTheatre.palchi, 'palchi', this.bookername);
       },
       error: (err) => {
         console.error(err.error);
       },
     });
-    this.repeat = true;
+    this.stop = true;
   }
 }
-
   ngOnInit() {}
 }
