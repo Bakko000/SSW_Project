@@ -1,7 +1,14 @@
 <div *ngIf="bookerid!='' && chiave">
 <p>Prenotazione di {{bookerid}}</p>
 <p id="nome"></p>
-<div id="platea"><h1>Platea</h1></div>
-<div id="palchi"><h1>Palchi</h1></div>
-{{ Prenotare() }}
+<h2>Platea</h2>
+  <div *ngFor="let fila of platea; let i = index">
+    <button id="platea" *ngFor="let posto of fila; let j = index" [style.color]="posto !== 'x' ? 'red' : 'green'" click="mostraNome()" value={{posto}}>P{{j+1}}{{i+1}}</button>
+  </div>
+ <br />
+ <h2>Palchi</h2>
+  <div *ngFor="let fila of palchi; let i = index">
+  <button id="palchi" *ngFor="let posto of fila; let j = index" [style.color]="posto !== 'x' ? 'red' : 'green'">P{{j+1}}{{i+1}}</button>
+</div>
+{{Prenotare()}}
 </div>
