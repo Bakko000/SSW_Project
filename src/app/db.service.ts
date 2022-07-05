@@ -11,13 +11,13 @@ export class DbService {
   
   constructor(private http: HttpClient) { }
 
-  public checkKey(key: string): Observable<string> {
+  public getTheatre(key: string): Observable<string> {
     return this.http.get<string>(this.baseurl+"/get?key="+key);
   }
   public newKey(): Observable<string> {
     return this.http.get<string>(this.baseurl+"/new?secret=ssw2022");
   }
-  public newTheatre(key, body): Observable<string> {
+  public setTheatre(key, body): Observable<string> {
     return this.http.post<string>(this.baseurl+"/set?key="+key, body);
   }
 }

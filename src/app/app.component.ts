@@ -34,7 +34,7 @@ export class AppComponent {
 
   Login(key: string) {
     const output = <HTMLElement>document.getElementById('output');
-    this.db.checkKey(key).subscribe({
+    this.db.getTheatre(key).subscribe({
       next: (content: any) => {
           this.chiave = key; // Il teatro esiste, accedi e aggiorna la chiave
           this.newtheatre = false; // E' necessario stabilire che non stiamo creando un nuovo teatro

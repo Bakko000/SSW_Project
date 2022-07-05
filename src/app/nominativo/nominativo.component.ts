@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { DbService } from '../db.service';
 
 @Component({
   selector: 'app-nominativo',
@@ -10,17 +11,26 @@ export class NominativoComponent implements OnInit {
   @Input() bookerid: string = '';
   @Input() newtheatre: boolean;
 
-  constructor() {}
+  constructor(private db: DbService) {}
 
-  Prenota(nominativo: string) {
+  public Prenota(nominativo: string) {
     this.bookerid = nominativo;
   }
 
-  Reset() {
-    console.log('Teatro svuotato');
+  public Reset() {
+    var body = "''";
+    this.db.setTheatre(this.chiave, body).subscribe({
+      next: (content: any) => {
+        console.log(this.chiave);
+        console.log(content);
+      },
+      error: (err) => {
+        console.error(err.error);
+      },
+    });
+    console.log(this.chiave);
+    console.log(body);
   }
 
-  ngOnInit() {
-    console.log(this.chiave);
-  }
+  ngOnInit() {}
 }
