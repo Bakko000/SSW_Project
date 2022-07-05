@@ -41,11 +41,6 @@ export class NuovoTeatroComponent implements OnInit {
     let postipal = prenotazione.slice(1,2);
     let platea = prenotazione.slice(2,9);
     let palchi = prenotazione.slice(9,)
-    console.log(platea);
-    console.log(palchi);
-    console.log(postipal);
-    console.log(postipla);
-    console.log(prenotazione);
    this.db.setTheatre(this.chiave, prenotazione).subscribe({
       next: (content: any) => {
         console.log(content);
