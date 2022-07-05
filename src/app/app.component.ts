@@ -34,13 +34,9 @@ export class AppComponent {
 
   Login(key: string) {
     const output = <HTMLElement>document.getElementById('output');
-    this.db.checkKey(key).subscribe({
+    this.db.getTheatre(key).subscribe({
       next: (content: any) => {
-        if (content != null) {
-          output.innerHTML = content;
-        } else {
           this.chiave = key;   // Il teatro esiste, accedi e aggiorna la chiave
-        }
         console.log('Accesso al teatro');
       },
       error: (err) => {
