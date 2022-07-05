@@ -45,11 +45,13 @@ export class PrenotazioneComponent implements OnInit {
   @Input() chiave: string;
   @Input() bookerid: string;
 
+  repeat: boolean = false;
+
   constructor(private db: DbService) {}
 
   public Prenotare() {
 
-    if(document.querySelector("button") != undefined) {
+    if(!this.repeat) {
 
     this.db.getTheatre(this.chiave).subscribe({
       next: (content: any) => {
@@ -70,6 +72,7 @@ export class PrenotazioneComponent implements OnInit {
         console.error(err.error);
       },
     });
+    this.repeat = true;
   }
 }
 
