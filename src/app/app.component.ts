@@ -27,11 +27,7 @@ export class AppComponent {
     const output = <HTMLElement>document.getElementById('output');
     this.db.checkKey(key).subscribe({
       next: (content: any) => {
-        if (content != null) {
-          output.innerHTML = content;
-        } else {
           this.chiave = key;
-        }
         console.log('Accesso al teatro');
       },
       error: (err) => {
