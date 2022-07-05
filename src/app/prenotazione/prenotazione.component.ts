@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 import { Teatro } from '../app.component';
 import { DbService } from '../db.service';
 
@@ -36,7 +36,7 @@ export class MostraTeatro {
       nomeEl.innerHTML = event.currentTarget.booker + ' ha prenotato il posto <i>' + this.id + '</i>';
       this.value = event.currentTarget.booker;
     } else {
-      nomeEl.innerHTML = this.value;
+      nomeEl.innerHTML =  "Occupato da " + this.value;
     }
   }
 }
@@ -46,9 +46,11 @@ export class MostraTeatro {
   templateUrl: './prenotazione.component.html',
   styleUrls: ['./prenotazione.component.css'],
 })
+
 export class PrenotazioneComponent implements OnInit {
   @Input() chiave: string;
   @Input() bookerid: string = '';
+  @Output() prenotazione = new EventEmitter<string>();
   repeat: boolean = false;
 
   constructor(private db: DbService) {}
