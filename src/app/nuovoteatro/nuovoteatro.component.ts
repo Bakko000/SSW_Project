@@ -34,10 +34,8 @@ export class NuovoTeatroComponent implements OnInit {
 
   public CreateTheatre() {
     this.clicked = false;
-    var body = 'Nuovo Teatro con chiave ' + this.chiave;
     var NuovoTeatro = new Teatro([],[], parseInt(this.postiplatea), this.fileplatea,  parseInt(this.postipalchi),this.filepalchi);
-
-    this.db.setTheatre(this.chiave, body).subscribe({
+    this.db.setTheatre(this.chiave, NuovoTeatro).subscribe({
       next: (content: any) => {
         console.log(content);
       },
