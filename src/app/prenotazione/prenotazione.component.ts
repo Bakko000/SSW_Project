@@ -14,6 +14,8 @@ export class PrenotazioneComponent implements OnInit {
   stop: boolean = false;
   platea: any[] = [];
   palchi: any[] = [];
+  postipla: number;
+  postipal: number;
 
   constructor(private db: DbService) {}
 
@@ -23,9 +25,9 @@ export class PrenotazioneComponent implements OnInit {
     this.db.getTheatre(this.chiave).subscribe({
       next: (content: any) => {
           var prenotazione = JSON.parse(content);
-          let postipla = parseInt(prenotazione.slice(0,1));
-          let postipal = parseInt(prenotazione.slice(1,2));
-          var MyTheatre = new Teatro([], [], postipla, 7, postipal, 4);
+          this.postipla = parseInt(prenotazione.slice(0,1));
+          this.postipal = parseInt(prenotazione.slice(1,2));
+          var MyTheatre = new Teatro([], [], this.postipla, 7, this.postipal, 4);
           this.platea = MyTheatre.platea;
           this.palchi = MyTheatre.palchi;
       },
@@ -40,12 +42,27 @@ export class PrenotazioneComponent implements OnInit {
     const nomeEl = document.getElementById('notifica');
     if(event.srcElement.attributes.style.nodeValue == "color: green;") {
       event.srcElement.attributes.style.nodeValue = "color: red;";
-      nomeEl.innerHTML = this.bookerid + " ha prenotato il posto <i>" + event.srcElement.attributes.id.nodeValue +"</i>";
-      
-      
+      var idbtn = event.srcElement.attributes.id.nodeValue;
+      nomeEl.innerHTML = this.bookerid + " ha prenotato il posto <i>" + idbtn +"</i>";
+      var prenotato = idbtn.split(',');
+      var posto = prenotato[0];
+      var fila = prenotato[1];
+      var dimensioni = [];
+      dimensioni[0] = this.postipla;
+      dimensioni[1] = this.postipal;
 
+      var NuovoTeatro = new Teatro([],[], this.postipla, 7, this.postipal, 4);
+      console.log(NuovoTeatro);
+      NuovoTeatro.platea[parseInt(fila)][parseInt(posto)] = this.bookerid;
+      console.log(NuovoTeatro);
+
+      var NuovaPrenotazione = dimensioni.concat(NuovoTeatro.platea).concat(NuovoTeatro.palchi);
+      this.db.setTheatre(this.chiave, NuovaPrenotazione).subscribe({
+        error: (err) => {
+          console.error(err.error);
+        },
+      });
     }
   }
-
   ngOnInit() {}
 }
