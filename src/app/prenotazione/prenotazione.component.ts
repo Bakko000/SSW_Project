@@ -29,11 +29,6 @@ export class PrenotazioneComponent implements OnInit {
           this.postipal = parseInt(prenotazione.slice(1,2));
           this.platea = prenotazione.slice(2,9);
           this.palchi = prenotazione.slice(9,);
-          console.log(this.platea);
-          var MyTheatre = new Teatro(this.platea, this.palchi, this.postipla, 7, this.postipal, 4);
-          this.platea = MyTheatre.platea;
-          this.palchi = MyTheatre.palchi;
-          console.log(this.platea);
       },
       error: (err) => {
         console.error(err.error);
@@ -54,13 +49,8 @@ export class PrenotazioneComponent implements OnInit {
       var dimensioni = [];
       dimensioni[0] = this.postipla;
       dimensioni[1] = this.postipal;
-
-      var NuovoTeatro = new Teatro([],[], this.postipla, 7, this.postipal, 4);
-      console.log(NuovoTeatro);
-      NuovoTeatro.platea[parseInt(fila)][parseInt(posto)] = this.bookerid;
-      console.log(NuovoTeatro);
-
-      var NuovaPrenotazione = dimensioni.concat(NuovoTeatro.platea).concat(NuovoTeatro.palchi);
+      this.platea[parseInt(fila)][parseInt(posto)] = this.bookerid;
+      var NuovaPrenotazione = dimensioni.concat(this.platea).concat(this.palchi);
       this.db.setTheatre(this.chiave, NuovaPrenotazione).subscribe({
         error: (err) => {
           console.error(err.error);
