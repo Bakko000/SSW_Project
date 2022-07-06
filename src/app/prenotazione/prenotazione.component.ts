@@ -41,7 +41,9 @@ export class PrenotazioneComponent implements OnInit {
     if(event.srcElement.attributes.style.nodeValue == "color: green;") {
       event.srcElement.attributes.style.nodeValue = "color: red;";
       nomeEl.innerHTML = this.bookerid + " ha prenotato il posto <i>" + event.srcElement.attributes.id.nodeValue +"</i>";
-      console.log(this.chiave);
+      
+      
+
     }
   }
 
