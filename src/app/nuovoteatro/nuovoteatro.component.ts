@@ -14,8 +14,8 @@ export class NuovoTeatroComponent implements OnInit {
   constructor(private db: DbService) {}
 
   public newTheatre() {
-    this.clicked = true;
-    this.newtheatre = true;
+    this.clicked = true;   // Fai apparire il form
+    this.newtheatre = true;  // Comunica che si sta creando un nuovo teatro
     const output = <HTMLElement>document.getElementById('output');
    this.db.newKey().subscribe({
       next: (content: any) => {
@@ -32,19 +32,12 @@ export class NuovoTeatroComponent implements OnInit {
   dimensioni: any[] = [];
 
   public CreateTheatre() {
-    this.clicked = false;
+    this.clicked = false;  // Fai sparire il form
     this.dimensioni[0] = this.postiplatea;
     this.dimensioni[1] = this.postipalchi;
     var NuovoTeatro = new Teatro([],[], parseInt(this.postiplatea), 7,  parseInt(this.postipalchi), 4);
     var prenotazione = this.dimensioni.concat(NuovoTeatro.platea).concat(NuovoTeatro.palchi);
-    let postipla = prenotazione.slice(0,1);
-    let postipal = prenotazione.slice(1,2);
-    let platea = prenotazione.slice(2,9);
-    let palchi = prenotazione.slice(9,)
    this.db.setTheatre(this.chiave, prenotazione).subscribe({
-      next: (content: any) => {
-        console.log(content);
-      },
       error: (err) => {
         console.error(err.error);
       },
