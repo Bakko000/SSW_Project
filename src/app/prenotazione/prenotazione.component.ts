@@ -38,9 +38,8 @@ export class PrenotazioneComponent implements OnInit {
   }
 }
   public selezionaPosto(event) {
-    event.preventDefault();
     const nomeEl = document.getElementById('notifica');
-    if(event.srcElement.attributes.style.nodeValue == "color: green;") {
+    if(event.srcElement.attributes.style.nodeValue == "color: green;" && ) {
       event.srcElement.attributes.style.nodeValue = "color: red;";
       var idbtn = event.srcElement.attributes.id.nodeValue;
       var prenotato = idbtn.split(',');
