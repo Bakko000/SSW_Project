@@ -36,7 +36,6 @@ export class PrenotazioneComponent implements OnInit {
     this.stop = true;
   }
 }
-
   public selezionaPosto(event) {
     const nomeEl = document.getElementById('notifica');
     if(event.srcElement.attributes.style.nodeValue == "color: green;") {
