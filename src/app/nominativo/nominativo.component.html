@@ -2,6 +2,6 @@
 <p>Prenotazione a nome di:</p>
 <label for="nominativo">Inserisci nome:</label><input #nominativo (keyup.enter)="Prenota(nominativo.value);nominativo.value=''" />
 <br />
-<!--<button (click)="Reset()">Reset</button>-->
+<button (click)="Reset()">Reset</button>
 </div>
 <app-prenotazione [bookerid]="bookerid" [chiave]="chiave"></app-prenotazione>

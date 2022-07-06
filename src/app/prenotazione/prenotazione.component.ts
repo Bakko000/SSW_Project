@@ -38,11 +38,11 @@ export class PrenotazioneComponent implements OnInit {
   }
 }
   public selezionaPosto(event) {
+    event.preventDefault();
     const nomeEl = document.getElementById('notifica');
     if(event.srcElement.attributes.style.nodeValue == "color: green;") {
       event.srcElement.attributes.style.nodeValue = "color: red;";
       var idbtn = event.srcElement.attributes.id.nodeValue;
-      nomeEl.innerHTML = this.bookerid + " ha prenotato il posto <i>" + idbtn +"</i>";
       var prenotato = idbtn.split(',');
       var posto = prenotato[0];
       var fila = prenotato[1];
