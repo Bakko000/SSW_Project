@@ -11,32 +11,31 @@ export class PrenotazioneComponent implements OnInit {
 
   @Input() chiave: string;
   @Input() bookerid: string = '';
-  repeat: boolean = false;
+  stop: boolean = false;
   platea: any[] = [];
   palchi: any[] = [];
 
   constructor(private db: DbService) {}
 
   public Prenotare() {
-    if (!this.repeat) { // Non si deve ripetere per più di una volta
-      this.db.getTheatre(this.chiave).subscribe({
-        next: (content: any) => {
-          var json = JSON.parse(content);
-          var npostipalchij = json.npostipalchi;
-          var nfilepalchij = json.nfilepalchi;
-          var npostiplateaj = json.npostiplatea;
-          var nfileplateaj = json.nfileplatea;
-          var MyTheatre = new Teatro([],[],npostiplateaj,nfileplateaj,npostipalchij,nfilepalchij);
+
+    if(!this.stop) {
+    this.db.getTheatre(this.chiave).subscribe({
+      next: (content: any) => {
+          var prenotazione = JSON.parse(content);
+          let postipla = parseInt(prenotazione.slice(0,1));
+          let postipal = parseInt(prenotazione.slice(1,2));
+          var MyTheatre = new Teatro([], [], postipla, 7, postipal, 4);
           this.platea = MyTheatre.platea;
           this.palchi = MyTheatre.palchi;
-        },
-        error: (err) => {
-          console.error(err.error);
-        },
-      });
-      this.repeat = true;
-    }
+      },
+      error: (err) => {
+        console.error(err.error);
+      },
+    });
+    this.stop = true;
   }
+}
 
   public selezionaPosto(event) {
     const nomeEl = document.getElementById('notifica');
