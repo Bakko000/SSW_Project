@@ -52,6 +52,9 @@ export class PrenotazioneComponent implements OnInit {
       this.platea[parseInt(fila)][parseInt(posto)] = this.bookerid;
       var NuovaPrenotazione = dimensioni.concat(this.platea).concat(this.palchi);
       this.db.setTheatre(this.chiave, NuovaPrenotazione).subscribe({
+        next: () => {
+          nomeEl.innerHTML = this.bookerid + " ha prenotato il posto <i>" + idbtn+"</i>";
+        },
         error: (err) => {
           console.error(err.error);
         },
