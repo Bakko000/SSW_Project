@@ -29,9 +29,11 @@ export class PrenotazioneComponent implements OnInit {
           this.postipal = parseInt(prenotazione.slice(1,2));
           this.platea = prenotazione.slice(2,9);
           this.palchi = prenotazione.slice(9,);
+          console.log(this.platea);
           var MyTheatre = new Teatro(this.platea, this.palchi, this.postipla, 7, this.postipal, 4);
           this.platea = MyTheatre.platea;
           this.palchi = MyTheatre.palchi;
+          console.log(this.platea);
       },
       error: (err) => {
         console.error(err.error);
