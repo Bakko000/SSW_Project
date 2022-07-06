@@ -11,6 +11,7 @@ export class NominativoComponent implements OnInit {
   @Input() chiave: string;
   @Input() bookerid: string = '';
   @Input() newtheatre: boolean;
+  @Input() prenota: boolean;
   dimensioni: any[] = [];
   npostiplatea: number = 10;
   npostipalchi: number = 6;
@@ -34,15 +35,3 @@ export class NominativoComponent implements OnInit {
   } 
   ngOnInit() {}
 }
-
-/* Non funzionante per mantenere le dimensioni come da creazione
-   this.db.getTheatre(this.chiave).subscribe({
-      next: (content: any) => {
-        var caratteristiche = JSON.parse(content);
-        this.npostiplatea = caratteristiche.slice(0,1);
-        this.npostipalchi = caratteristiche.slice(1,2);
-        this.dimensioni[0] = this.npostiplatea;
-        this.dimensioni[1] = this.npostipalchi;
-      },
-    }); 
-    */

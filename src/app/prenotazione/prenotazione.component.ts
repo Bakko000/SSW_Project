@@ -15,6 +15,7 @@ export class PrenotazioneComponent implements OnInit {
   palchi: any[] = [];
   postipla: number;
   postipal: number;
+  prenota: boolean = false;
 
   constructor(private db: DbService) {}
 
@@ -36,8 +37,8 @@ export class PrenotazioneComponent implements OnInit {
     this.stop = true;
   }
 }
-  public selezionaPosto(event, settore) {
-    const nomeEl = document.getElementById('notifica');
+  public selezionaPosto(event, settore, file, posti) {
+    const notifica = document.getElementById('notifica');
     if(event.srcElement.attributes.style.nodeValue == "color: green;") {
       this.style = "color: red;";
       var idbtn = event.srcElement.attributes.id.nodeValue;
@@ -54,17 +55,21 @@ export class PrenotazioneComponent implements OnInit {
       }
       var NuovaPrenotazione = dimensioni.concat(this.platea).concat(this.palchi);
       this.db.setTheatre(this.chiave, NuovaPrenotazione).subscribe({
-        next: () => {
-          nomeEl.innerHTML = this.bookerid + " ha prenotato il posto <i>" + idbtn+"</i>";
-        },
         error: (err) => {
           console.error(err.error);
         },
       });
+      if(settore=="platea"){
+      notifica.innerHTML = this.bookerid + " ha prenotato il posto <i>Platea - "+(posti+1)+(file+1)+"</i>";
+      } else{
+        notifica.innerHTML = this.bookerid + " ha prenotato il posto <i>Palchi - "+(posti+1)+(file+1)+"</i>";
+      }
+      this.bookerid = '';
+      this.prenota = true;
     } else {
       var valueAttr = event.srcElement.attributes.value;
       var value = valueAttr.nodeValue;
-      nomeEl.innerHTML= "Occupato da " + value;
+      notifica.innerHTML= "Occupato da " + value;
     }
   }
   ngOnInit() {}
