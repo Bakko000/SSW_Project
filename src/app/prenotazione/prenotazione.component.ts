@@ -14,7 +14,6 @@ export class MostraTeatro {
   constructor(posti, settore, bookername, chiave, private db: DbService, postipal, postipla) {
     this.bookername = bookername;
     this.chiave = chiave;
-    this.prenota = prenota;
     this.postipal = postipal;
     this.postipla = postipla;
     var element = document.getElementById(settore);
@@ -35,7 +34,6 @@ export class MostraTeatro {
         btn.key = this.chiave;
         btn.npostiplatea = this.postipla;
         btn.npostipalchi = this.postipal;
-        btn.pren = this.prenota;
         return btn;
       });
       element.appendChild(document.createElement('br'));
@@ -96,8 +94,8 @@ export class PrenotazioneComponent implements OnInit {
           let postipla = parseInt(prenotazione.slice(0,1));
           let postipal = parseInt(prenotazione.slice(1,2));
           var MyTheatre = new Teatro([], [], postipla, 7, postipal, 4);
-          var plateaPrenotazione = new MostraTeatro(MyTheatre.platea, 'platea', this.bookername, this.chiave, this.db, prenotazione, postipla, postipal);
-          var palchiPrenotazione = new MostraTeatro(MyTheatre.palchi, 'palchi', this.bookername, this.chiave, this.db, prenotazione, postipla, postipal);
+          var plateaPrenotazione = new MostraTeatro(MyTheatre.platea, 'platea', this.bookername, this.chiave, this.db, postipla, postipal);
+          var palchiPrenotazione = new MostraTeatro(MyTheatre.palchi, 'palchi', this.bookername, this.chiave, this.db, postipla, postipal);
       },
       error: (err) => {
         console.error(err.error);
