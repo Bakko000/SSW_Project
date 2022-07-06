@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Teatro } from '../app.component';
 import { DbService } from '../db.service';
 
 @Component({
