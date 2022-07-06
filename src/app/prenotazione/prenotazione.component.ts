@@ -27,7 +27,9 @@ export class PrenotazioneComponent implements OnInit {
           var prenotazione = JSON.parse(content);
           this.postipla = parseInt(prenotazione.slice(0,1));
           this.postipal = parseInt(prenotazione.slice(1,2));
-          var MyTheatre = new Teatro([], [], this.postipla, 7, this.postipal, 4);
+          this.platea = prenotazione.slice(2,9);
+          this.palchi = prenotazione.slice(9,);
+          var MyTheatre = new Teatro(this.platea, this.palchi, this.postipla, 7, this.postipal, 4);
           this.platea = MyTheatre.platea;
           this.palchi = MyTheatre.palchi;
       },
