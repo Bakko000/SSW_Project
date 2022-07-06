@@ -37,10 +37,10 @@ export class PrenotazioneComponent implements OnInit {
     this.stop = true;
   }
 }
-  public selezionaPosto(event) {
+  public selezionaPosto(event, settore) {
     const nomeEl = document.getElementById('notifica');
-    if(event.srcElement.attributes.style.nodeValue == "color: green;" && ) {
-      event.srcElement.attributes.style.nodeValue = "color: red;";
+    if(event.srcElement.attributes.style.nodeValue == "color: green;") {
+      this.style = "color: red;";
       var idbtn = event.srcElement.attributes.id.nodeValue;
       var prenotato = idbtn.split(',');
       var posto = prenotato[0];
@@ -48,7 +48,11 @@ export class PrenotazioneComponent implements OnInit {
       var dimensioni = [];
       dimensioni[0] = this.postipla;
       dimensioni[1] = this.postipal;
+      if(settore=="platea"){
       this.platea[parseInt(fila)][parseInt(posto)] = this.bookerid;
+      } else {
+        this.palchi[parseInt(fila)][parseInt(posto)] = this.bookerid;
+      }
       var NuovaPrenotazione = dimensioni.concat(this.platea).concat(this.palchi);
       this.db.setTheatre(this.chiave, NuovaPrenotazione).subscribe({
         next: () => {
@@ -58,6 +62,10 @@ export class PrenotazioneComponent implements OnInit {
           console.error(err.error);
         },
       });
+    } else {
+      var valueAttr = event.srcElement.attributes.value;
+      var value = valueAttr.nodeValue;
+      nomeEl.innerHTML= "Occupato da " + value;
     }
   }
   ngOnInit() {}
