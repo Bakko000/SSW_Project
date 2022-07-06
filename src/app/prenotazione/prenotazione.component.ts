@@ -7,7 +7,7 @@ import { DbService } from '../db.service';
   templateUrl: './prenotazione.component.html',
   styleUrls: ['./prenotazione.component.css'],
 })
-export class PrenotazioneComponent implements OnInit {d78862b5
+export class PrenotazioneComponent implements OnInit {
 
   @Input() chiave: string;
   @Input() bookerid: string = '';
@@ -43,6 +43,7 @@ export class PrenotazioneComponent implements OnInit {d78862b5
     if(event.srcElement.attributes.style.nodeValue == "color: green;") {
       event.srcElement.attributes.style.nodeValue = "color: red;";
       nomeEl.innerHTML = this.bookerid + " ha prenotato il posto <i>" + event.srcElement.attributes.id.nodeValue +"</i>";
+      console.log(this.chiave);
     }
   }
 
