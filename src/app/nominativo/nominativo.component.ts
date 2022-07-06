@@ -26,7 +26,6 @@ export class NominativoComponent implements OnInit {
     dimensioni[1] = 6;
     var NuovoTeatro = new Teatro([],[], 10, 7,  6, 4);
     var Reset = dimensioni.concat(NuovoTeatro.platea).concat(NuovoTeatro.palchi);
-    console.log(NuovoTeatro);
     this.db.setTheatre(this.chiave, Reset).subscribe({
       error: (err) => {
         console.error(err.error);
