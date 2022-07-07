@@ -1,0 +1,9 @@
+<div *ngIf="clicked && newtheatre">
+<h3>Configura il teatro e scrivi il tuo nominativo</h3>
+<form>
+  <p><label for="postipalchi">Numero posti palchi</label><input [(ngModel)]="postipalchi" name="postipalchi"></p>
+  <p><label for="postiplatea">Numero posti platea</label><input [(ngModel)]="postiplatea" name="postiplatea"></p>
+  <button (click)="CreateTheatre()">Conferma</button>
+</form>
+</div>
+<p id="nuovocreato" *ngIf="newtheatre && !clicked">Creato un nuovo teatro con {{postipalchi}} posti per i palchi e di {{postiplatea}} posti per la platea. Il teatro è ora accessibile con la seguente chiave: {{chiave}}</p>
