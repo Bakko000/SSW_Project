@@ -9,7 +9,7 @@ In questa versione è possibile creare un nuovo teatro scegliendo il numero di p
 Il linguaggio utilizzato è TypeScript. Per l'architettura <i>three-tier</i> che rispetta il paradigma MVC, si sfrutta il framework Angular13.
 
 # Anteprima e link al deploy
-https://myproject-72e14.firebaseapp.com/?90313
+https://myproject-72e14.firebaseapp.com/?93743
 
 # Struttura
 Il progetto si articola in 4 componenti compreso quello principale, ed un servizio. Ogni componente ha il foglio di stile del componente principale app.component.
