@@ -1,7 +1,7 @@
 <div *ngIf="chiave!='' && bookerid==''">
 <p>Prenotazione a nome di:</p>
-<label for="nominativo">Inserisci nome:</label><input #nominativo (keyup.enter)="Prenota(nominativo.value);nominativo.value=''" />
+<label for="nominativo">Inserisci nome:</label><input class="form-control" #nominativo (keyup.enter)="Prenota(nominativo.value);nominativo.value=''" />
 <br />
-<button (click)="Reset()">Reset</button>
+<button class="btn btn-lg btn-info btn-block" (click)="Reset()">Reset</button>
 </div>
 <app-prenotazione [bookerid]="bookerid" [chiave]="chiave"></app-prenotazione>

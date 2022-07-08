@@ -5,6 +5,7 @@ import { Teatro } from '../app.component';
 @Component({
   selector: 'nuovoteatro-root',
   templateUrl: './nuovoteatro.component.html',
+  styleUrls: ['../app.component.css'],
 })
 export class NuovoTeatroComponent implements OnInit {
   @Input() clicked: boolean;

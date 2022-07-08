@@ -4,7 +4,7 @@ import { DbService } from '../db.service';
 @Component({
   selector: 'app-prenotazione',
   templateUrl: './prenotazione.component.html',
-  styleUrls: ['./prenotazione.component.css'],
+  styleUrls: ['../app.component.css'],
 })
 export class PrenotazioneComponent implements OnInit {
 
