@@ -3,10 +3,10 @@
 # Descrizione
 Il progetto riguarda la creazione delle principali funzionalità di una applicazione per la prenotazione di posti in un teatro.
 L'applicazione fornisce all'utente la possibilità di accedere alle prenotazione di un certo spettacolo, visualizzare i posti disponibili nel teatro (platea e palchi), scegliere un posto, associargli il proprio nominativo, e ricevere conferma dell'avvenuta prenotazione. L'utente può fare funzione di biglietteria, prenotando in sequenza biglietti per gli utenti.
-In questa versione è possibile creare un nuovo teatro scegliendo il numero di posti per il teatro e, nell'interfaccia di prenotazione, prenotare "rapidamente" con un solo click il posto desiderato.
+In questa versione è possibile creare un nuovo teatro configurandone il numero di posti e, nell'interfaccia di prenotazione, prenotare "rapidamente" con un solo click il posto desiderato.
 
 # Codice
-Il linguaggio utilizzato è TypeScript. Per l'architettura <i>three-tier</i> che rispetta il paradigma MVC, si sfrutta il framework Angular13.
+Il linguaggio utilizzato è TypeScript. Per l'architettura <i>three-tier</i> che rispetta il paradigma MVC, si sfrutta il framework Angular13+.
 
 # Anteprima e link al deploy
 https://myproject-72e14.firebaseapp.com/?93743
