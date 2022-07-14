@@ -34,15 +34,20 @@ export class NuovoTeatroComponent implements OnInit {
 
   public CreateTheatre() {
     this.clicked = false;  // Fai sparire il form
-    this.dimensioni[0] = this.postiplatea;
-    this.dimensioni[1] = this.postipalchi;
+    this.dimensioni[0] = parseInt(this.postiplatea);
+    this.dimensioni[1] = parseInt(this.postipalchi);
+    if(this.dimensioni[0] > 1 && this.dimensioni[1] > 1 ) {
     var NuovoTeatro = new Teatro([],[], parseInt(this.postiplatea), 7,  parseInt(this.postipalchi), 4);
     var prenotazione = this.dimensioni.concat(NuovoTeatro.platea).concat(NuovoTeatro.palchi);
    this.db.setTheatre(this.chiave, prenotazione).subscribe({
       error: (err) => {
         console.error(err.error);
       },
-    }); 
+    });
+  } else {
+      throw "Inserire valori validi";
+    }
+    document.getElementById('notifica').innerHTML = "Si";
   }
   ngOnInit() {}
 }
