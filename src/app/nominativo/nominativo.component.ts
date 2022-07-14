@@ -19,7 +19,12 @@ export class NominativoComponent implements OnInit {
   constructor(private db: DbService) {}
 
   public Prenota(nominativo: string) {
+    let regexp = "^(?=.{1,40}$)[a-zA-Z]+(?:[-' ][a-zA-Z]+)*$";
+    if(nominativo.trim().match(regexp)) {
     this.bookerid = nominativo;
+    } else {
+      throw "Inserisci un nominativo valido";
+    }
   }
   public Reset() {
     var dimensioni = [];
