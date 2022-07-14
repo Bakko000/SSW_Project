@@ -11,7 +11,6 @@ export class NuovoTeatroComponent implements OnInit {
   @Input() chiave: string;
   postiplatea: string;
   postipalchi: string;
-  newtheatre: boolean = false;
   dimensioni: any[] = [];
 
   constructor(private db: DbService) {}
@@ -43,6 +42,10 @@ export class NuovoTeatroComponent implements OnInit {
    } else {
      throw "Errore: inserisci valori validi";
    }
+  }
+
+  private clean() {
+    this.newtheatre=undefined;
   }
   ngOnInit() {}
 }
