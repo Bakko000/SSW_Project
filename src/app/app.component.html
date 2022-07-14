@@ -3,7 +3,6 @@
 <p><label for="chiave">Inserisci la chiave</label> 
 <input class="form-control" #chiave (keyup.enter)="Login(chiave.value);chiave.value=''"/>
 </p>
-<p> Oppure:</p>
 </div>
 <nuovoteatro-root [chiave]="chiave"></nuovoteatro-root>
 <app-nominativo [chiave]="chiave"></app-nominativo>

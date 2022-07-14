@@ -11,6 +11,7 @@ export class NuovoTeatroComponent implements OnInit {
   @Input() chiave: string;
   postiplatea: string;
   postipalchi: string;
+  newtheatre: any;
   dimensioni: any[] = [];
 
   constructor(private db: DbService) {}
@@ -28,7 +29,7 @@ export class NuovoTeatroComponent implements OnInit {
         this.chiave = content;
         this.db.setTheatre(this.chiave, prenotazione).subscribe({
           next: (content: any) => {
-            this.newtheatre= true;
+            this.newtheatre = true;
           },
           error: (err) => {
             console.error(err.error);
@@ -45,7 +46,7 @@ export class NuovoTeatroComponent implements OnInit {
   }
 
   private clean() {
-    this.newtheatre=undefined;
+    this.newtheatre = undefined;
   }
   ngOnInit() {}
 }
