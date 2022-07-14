@@ -11,6 +11,7 @@ export class NuovoTeatroComponent implements OnInit {
   @Input() chiave: string;
   postiplatea: string;
   postipalchi: string;
+  newtheatre: boolean = false;
   dimensioni: any[] = [];
 
   constructor(private db: DbService) {}
@@ -26,21 +27,21 @@ export class NuovoTeatroComponent implements OnInit {
     this.db.newKey().subscribe({
       next: (content: any) => {
         this.chiave = content;
-      },
-      error: (err) => {
-        console.error(err.error);
-      },
-    });
-    this.db.setTheatre(this.chiave, prenotazione).subscribe({
-      next: (content: any) => {
-        document.getElementById("notifica").innerHTML = "Creato un nuovo teatro con " + this.postipalchi + "posti per i palchi e di " + this.postiplatea + " posti per la platea. Il teatro è ora accessibile con la seguente chiave: "+ this.chiave;
+        this.db.setTheatre(this.chiave, prenotazione).subscribe({
+          next: (content: any) => {
+            this.newtheatre= true;
+          },
+          error: (err) => {
+            console.error(err.error);
+          },
+        });
       },
       error: (err) => {
         console.error(err.error);
       },
     });
    } else {
-     throw "Inserisci valori validi"
+     throw "Errore: inserisci valori validi";
    }
   }
   ngOnInit() {}

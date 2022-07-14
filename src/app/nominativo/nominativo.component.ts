@@ -22,7 +22,7 @@ export class NominativoComponent implements OnInit {
     if(nominativo.trim().match(regexp)) {
     this.bookerid = nominativo;
     } else {
-      throw "Inserisci un nominativo valido";
+      throw "Errore: inserisci un nominativo valido";
     }
   }
   public Reset() {
