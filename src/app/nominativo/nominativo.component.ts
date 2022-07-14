@@ -29,7 +29,7 @@ export class NominativoComponent implements OnInit {
     var dimensioni = [];
     dimensioni[0] = 10;
     dimensioni[1] = 6;
-    var NuovoTeatro = new Teatro([],[], 10, 7,  6, 4);
+    var NuovoTeatro = new Teatro([],[], 10, 7,  6, 4); 
     var Reset = dimensioni.concat(NuovoTeatro.platea).concat(NuovoTeatro.palchi);
     this.db.setTheatre(this.chiave, Reset).subscribe({
       error: (err) => {
