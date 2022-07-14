@@ -7,6 +7,8 @@ In questa versione è possibile creare un nuovo teatro configurandone il numero 
 
 # Codice
 Il linguaggio utilizzato è TypeScript. Per l'organizzazione del codice che rispetta il paradigma MVC, si sfrutta il framework Angular13+.
+La chiave che è stata generata è la seguente: f5794d32.
+Inserendola nella pagina iniziale, si accede ad un teatro precostruito con 7 file da 10 posti per la platea, 4 file da 6 posti per i palchi.
 
 # Anteprima e link al deploy
 https://myproject-72e14.firebaseapp.com/?100319
