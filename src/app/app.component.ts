@@ -31,7 +31,6 @@ export class AppComponent {
   constructor(private db: DbService) {}
 
   Login(key: string) {
-    const output = <HTMLElement>document.getElementById('output');
     this.db.getTheatre(key).subscribe({
       next: (content: any) => {
           this.chiave = key; // Il teatro esiste, accedi e aggiorna la chiave
