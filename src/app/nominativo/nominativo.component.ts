@@ -10,7 +10,6 @@ import { Teatro } from '../app.component';
 export class NominativoComponent implements OnInit {
   @Input() chiave: string;
   @Input() bookerid: string = '';
-  @Input() newtheatre: boolean;
   @Input() prenota: boolean;
   dimensioni: any[] = [];
   npostiplatea: number = 10;
@@ -23,7 +22,7 @@ export class NominativoComponent implements OnInit {
     if(nominativo.trim().match(regexp)) {
     this.bookerid = nominativo;
     } else {
-      throw "Inserisci un nominativo valido";
+      throw "Errore: inserisci un nominativo valido";
     }
   }
   public Reset() {

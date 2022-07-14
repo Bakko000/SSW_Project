@@ -5,49 +5,48 @@ import { Teatro } from '../app.component';
 @Component({
   selector: 'nuovoteatro-root',
   templateUrl: './nuovoteatro.component.html',
-  styleUrls: ['../app.component.css']
+  styleUrls: ['../app.component.css'],
 })
 export class NuovoTeatroComponent implements OnInit {
-  @Input() clicked: boolean;
   @Input() chiave: string;
-  @Input() newtheatre: boolean = false;
+  postiplatea: string;
+  postipalchi: string;
+  newtheatre: any;
+  dimensioni: any[] = [];
 
   constructor(private db: DbService) {}
 
-  public newTheatre() {
-    this.clicked = true;   // Fai apparire il form
-    this.newtheatre = true;  // Comunica che si sta creando un nuovo teatro
-    const output = <HTMLElement>document.getElementById('output');
-   this.db.newKey().subscribe({
-      next: (content: any) => {
-        this.chiave = content;
-      },
-      error: (err) => {
-        console.error(err.error);
-      },
-    });
-  }
-
-  postiplatea: string;
-  postipalchi: string;
-  dimensioni: any[] = [];
-
   public CreateTheatre() {
-    this.clicked = false;  // Fai sparire il form
     this.dimensioni[0] = parseInt(this.postiplatea);
     this.dimensioni[1] = parseInt(this.postipalchi);
-    if(this.dimensioni[0] > 1 && this.dimensioni[1] > 1 ) {
-    var NuovoTeatro = new Teatro([],[], parseInt(this.postiplatea), 7,  parseInt(this.postipalchi), 4);
+
+    if(this.dimensioni[0] > 1 && this.dimensioni[1] > 1) {
+    var NuovoTeatro = new Teatro([],[],this.dimensioni[0],7,this.dimensioni[1],4);
     var prenotazione = this.dimensioni.concat(NuovoTeatro.platea).concat(NuovoTeatro.palchi);
-   this.db.setTheatre(this.chiave, prenotazione).subscribe({
+
+    this.db.newKey().subscribe({
+      next: (content: any) => {
+        this.chiave = content;
+        this.db.setTheatre(this.chiave, prenotazione).subscribe({
+          next: (content: any) => {
+            this.newtheatre = true;
+          },
+          error: (err) => {
+            console.error(err.error);
+          },
+        });
+      },
       error: (err) => {
         console.error(err.error);
       },
     });
-  } else {
-      throw "Inserire valori validi";
-    }
-    document.getElementById('notifica').innerHTML = "Si";
+   } else {
+     throw "Errore: inserisci valori validi";
+   }
+  }
+
+  private clean() {
+    this.newtheatre = undefined;
   }
   ngOnInit() {}
 }
