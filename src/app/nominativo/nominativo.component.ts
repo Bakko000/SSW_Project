@@ -10,7 +10,6 @@ import { Teatro } from '../app.component';
 export class NominativoComponent implements OnInit {
   @Input() chiave: string;
   @Input() bookerid: string = '';
-  @Input() newtheatre: boolean;
   @Input() prenota: boolean;
   dimensioni: any[] = [];
   npostiplatea: number = 10;

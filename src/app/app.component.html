@@ -3,9 +3,10 @@
 <p><label for="chiave">Inserisci la chiave</label> 
 <input class="form-control" #chiave (keyup.enter)="Login(chiave.value);chiave.value=''" />
 </p>
-<p> Oppure:<button class="btn btn-lg btn-info btn-block" (click)="nuovoteatro.newTheatre()">Crea nuovo teatro</button></p>
+<p> Oppure crea un nuovo teatro:</p>
 </div>
-<nuovoteatro-root [clicked]="clicked" [newtheatre]="newtheatre" #nuovoteatro></nuovoteatro-root>
+<p id="notifica"></p>
+<nuovoteatro-root [chiave]="chiave"></nuovoteatro-root>
 <app-nominativo [chiave]="chiave"></app-nominativo>
 
 

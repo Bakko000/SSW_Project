@@ -8,15 +8,11 @@ import { Teatro } from '../app.component';
   styleUrls: ['../app.component.css'],
 })
 export class NuovoTeatroComponent implements OnInit {
-  @Input() clicked: boolean;
   @Input() chiave: string;
-  @Input() newtheatre: boolean = false;
 
   constructor(private db: DbService) {}
 
   public newTheatre() {
-    this.clicked = true;   // Fai apparire il form
-    this.newtheatre = true;  // Comunica che si sta creando un nuovo teatro
     const output = <HTMLElement>document.getElementById('output');
    this.db.newKey().subscribe({
       next: (content: any) => {
@@ -33,7 +29,6 @@ export class NuovoTeatroComponent implements OnInit {
   dimensioni: any[] = [];
 
   public CreateTheatre() {
-    this.clicked = false;  // Fai sparire il form
     this.dimensioni[0] = this.postiplatea;
     this.dimensioni[1] = this.postipalchi;
     var NuovoTeatro = new Teatro([],[], parseInt(this.postiplatea), 7,  parseInt(this.postipalchi), 4);

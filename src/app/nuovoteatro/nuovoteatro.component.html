@@ -1,4 +1,4 @@
-<div *ngIf="clicked && newtheatre">
+<div *ngIf="chiave==''">
 <h3>Configura il teatro ed il numero di posti</h3>
 <form>
   <p><label for="postipalchi">Numero posti palchi</label><input class="form-control" [(ngModel)]="postipalchi" name="postipalchi"></p>
@@ -6,4 +6,4 @@
   <button class="btn btn-lg btn-info btn-block" (click)="CreateTheatre()">Conferma</button>
 </form>
 </div>
-<p id="nuovocreato" *ngIf="newtheatre && !clicked">Creato un nuovo teatro con {{postipalchi}} posti per i palchi e di {{postiplatea}} posti per la platea. Il teatro è ora accessibile con la seguente chiave: {{chiave}}</p>
+<!--<p id="nuovocreato" *ngIf="newtheatre && !clicked">Creato un nuovo teatro con {{postipalchi}} posti per i palchi e di {{postiplatea}} posti per la platea. Il teatro è ora accessibile con la seguente chiave: {{chiave}}</p>-->
