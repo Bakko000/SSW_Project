@@ -9,12 +9,21 @@ import { Teatro } from '../app.component';
 })
 export class NuovoTeatroComponent implements OnInit {
   @Input() chiave: string;
+  postiplatea: string;
+  postipalchi: string;
+  dimensioni: any[] = [];
 
   constructor(private db: DbService) {}
 
-  public newTheatre() {
-    const output = <HTMLElement>document.getElementById('output');
-   this.db.newKey().subscribe({
+  public CreateTheatre() {
+    this.dimensioni[0] = parseInt(this.postiplatea);
+    this.dimensioni[1] = parseInt(this.postipalchi);
+
+    if(this.dimensioni[0] > 1 && this.dimensioni[1] > 1) {
+    var NuovoTeatro = new Teatro([],[],this.dimensioni[0],7,this.dimensioni[1],4);
+    var prenotazione = this.dimensioni.concat(NuovoTeatro.platea).concat(NuovoTeatro.palchi);
+
+    this.db.newKey().subscribe({
       next: (content: any) => {
         this.chiave = content;
       },
@@ -22,22 +31,17 @@ export class NuovoTeatroComponent implements OnInit {
         console.error(err.error);
       },
     });
-  }
-
-  postiplatea: string;
-  postipalchi: string;
-  dimensioni: any[] = [];
-
-  public CreateTheatre() {
-    this.dimensioni[0] = this.postiplatea;
-    this.dimensioni[1] = this.postipalchi;
-    var NuovoTeatro = new Teatro([],[], parseInt(this.postiplatea), 7,  parseInt(this.postipalchi), 4);
-    var prenotazione = this.dimensioni.concat(NuovoTeatro.platea).concat(NuovoTeatro.palchi);
-   this.db.setTheatre(this.chiave, prenotazione).subscribe({
+    this.db.setTheatre(this.chiave, prenotazione).subscribe({
+      next: (content: any) => {
+        document.getElementById("notifica").innerHTML = "Creato un nuovo teatro con " + this.postipalchi + "posti per i palchi e di " + this.postiplatea + " posti per la platea. Il teatro è ora accessibile con la seguente chiave: "+ this.chiave;
+      },
       error: (err) => {
         console.error(err.error);
       },
-    }); 
+    });
+   } else {
+     throw "Inserisci valori validi"
+   }
   }
   ngOnInit() {}
 }

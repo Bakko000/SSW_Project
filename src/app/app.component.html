@@ -1,13 +1,13 @@
 <h1>Prenotazioni teatro</h1>
 <div *ngIf="chiave=='' && bookerid==undefined">
 <p><label for="chiave">Inserisci la chiave</label> 
-<input class="form-control" #chiave (keyup.enter)="Login(chiave.value);chiave.value=''" />
+<input class="form-control" #chiave (keyup.enter)="Login(chiave.value);chiave.value=''"/>
 </p>
-<p> Oppure crea un nuovo teatro:</p>
+<p> Oppure:</p>
 </div>
-<p id="notifica"></p>
 <nuovoteatro-root [chiave]="chiave"></nuovoteatro-root>
 <app-nominativo [chiave]="chiave"></app-nominativo>
+<p id="notifica"></p>
 
 
 
