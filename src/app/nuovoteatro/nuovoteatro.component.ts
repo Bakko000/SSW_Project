@@ -20,7 +20,7 @@ export class NuovoTeatroComponent implements OnInit {
     this.dimensioni[0] = parseInt(this.postiplatea);
     this.dimensioni[1] = parseInt(this.postipalchi);
 
-    if(this.dimensioni[0] > 1 && this.dimensioni[1] > 1) {
+    if(this.dimensioni[0] > 1 && this.dimensioni[1] > 2) {
     var NuovoTeatro = new Teatro([],[],this.dimensioni[0],7,this.dimensioni[1],4);
     var prenotazione = this.dimensioni.concat(NuovoTeatro.platea).concat(NuovoTeatro.palchi);
 
