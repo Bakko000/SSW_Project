@@ -1,6 +1,7 @@
 import {Component, Input, OnInit}  from '@angular/core';
 import { Teatro } from '../app.component';
 import { DbService } from '../db.service';
+import { OrdinaComponent } from '../ordina/ordina.component';
 
 export class MostraTeatro {
   prenotazione = [];
@@ -13,24 +14,13 @@ export class MostraTeatro {
         btn.style.color = nome !== 'x' ? 'red' : 'green';
         btn.innerHTML = 'P' + (j + 1) + (i + 1);
         btn.value = nome == 'x' ? 'Libero' : nome;
-        btn.addEventListener('click', this.mostraNome);
+        btn.addEventListener('click', OrdinaComponent.prototype.selezionaPosto);
         return btn;
       });
     element.appendChild(document.createElement("br"));
     return p;
   });
-}
-
-  private mostraNome(event) {
-    const nomeEl = document.getElementById('nome');
-    var valueAttr = event.srcElement.attributes.value;
-    var value = valueAttr.nodeValue;
-    if(this.style.color != "red") {
-      this.style.color = "red";
-    } else {
-      nomeEl.innerHTML = value;
-    }
-  }
+ }
 }
 
 @Component({
