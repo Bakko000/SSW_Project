@@ -1,4 +1,5 @@
-# Progetto Sviluppo dei Servizi Web AA 2021/2022 - final evaluation mark: 30/30
+# Progetto Sviluppo dei Servizi Web AA 2021/2022
+final evaluation mark: 30/30
 
 # Descrizione
 Il progetto riguarda la creazione delle principali funzionalità di una applicazione per la prenotazione di posti in un teatro.
