@@ -37,11 +37,12 @@ export class PrenotazioneComponent implements OnInit {
     this.stop = true;
   }
 }
-  public selezionaPosto(event, settore, file, posti) {
+  public selezionaPosto($event: Event, settore, file, posti) {
     const notifica = document.getElementById('notifica');
-    if(event.srcElement.attributes.style.nodeValue == "color: green;") {
-      this.style = "color: red;";
-      var idbtn = event.srcElement.attributes.id.nodeValue;
+    var elem = $event.target as HTMLButtonElement;
+    if(elem.style.color == "green") {
+      elem.style.color = "red";
+      var idbtn = elem.id;
       var prenotato = idbtn.split(',');
       var posto = prenotato[0];
       var fila = prenotato[1];
@@ -67,9 +68,7 @@ export class PrenotazioneComponent implements OnInit {
       this.bookerid = '';
       this.prenota = true;
     } else {
-      var valueAttr = event.srcElement.attributes.value;
-      var value = valueAttr.nodeValue;
-      notifica.innerHTML= "Occupato da " + value;
+      notifica.innerHTML= "Occupato da " + elem.value;
     }
   }
   ngOnInit() {}
