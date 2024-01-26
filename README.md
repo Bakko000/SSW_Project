@@ -11,9 +11,6 @@ Il linguaggio utilizzato è TypeScript. Per l'organizzazione del codice che risp
 La chiave che è stata generata è la seguente: f5794d32.
 Inserendola nella pagina iniziale, si accede ad un teatro precostruito con 7 file da 10 posti per la platea, 4 file da 6 posti per i palchi.
 
-# Anteprima e link al deploy
-https://myproject-72e14.firebaseapp.com/?49523
-
 # Struttura
 Il progetto si articola in 4 componenti compreso quello principale, ed un servizio. Ogni componente ha il foglio di stile del componente principale app.component.
 
